@@ -1,3 +1,17 @@
+/* 
+TODO: 
+    hover on nav-links
+    pick 2 fonts
+    responsive table
+    footer
+    accordion on nav items
+    adjust padding of content
+    change default display picture of user
+*/
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
 :root {
     --color1: #38023B;
     --color2: #A288E3;
@@ -20,9 +34,18 @@
     align-items: center;
 }
 
+#brandName {
+    font-family: 'Merriweather', serif;
+}
+
+#schoolName {
+    font-family: 'Merriweather', serif;
+}
+
 #pageTitle {
-    font-size: 23px;
+    font-size: 18px;
     margin: 0;
+    font-family: 'Merriweather', serif;
 }
 
 li a.nav-link {

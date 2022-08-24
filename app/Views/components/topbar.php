@@ -1,7 +1,7 @@
 <nav id="topbar" class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <button class="btn"><i class="fas fa-fw fa-bars"></i></button>
-    <a class="navbar-brand">GNHS</a>
+    <button class="btn" id="sidebarBtn"><i class="fas fa-fw fa-bars"></i></button>
+    <a class="navbar-brand" id="schoolName">Goa National High School</a>
 
     <div class="dropdown dropstart">
       <a href="#" class="d-flex align-items-center text-decoration-none text-dark dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

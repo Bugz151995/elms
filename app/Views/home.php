@@ -9,7 +9,6 @@
 
 <main id="content">
     <?= $this->include('components/breadcrumb') ?>
-
 </main>
 
 <?= $this->endSection() ?>

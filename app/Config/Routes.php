@@ -37,6 +37,11 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Page::showPage');
 $routes->get('home', 'Page::showPage/home');
+$routes->get('registered_books', 'Page::showPage/registered_books');
+$routes->get('borrowed_books', 'Page::showPage/borrowed_books');
+$routes->get('returned_books', 'Page::showPage/returned_books');
+$routes->get('registered_users', 'Page::showPage/registered_users');
+$routes->get('user_rankings', 'Page::showPage/user_rankings');
 
 /*
  * --------------------------------------------------------------------
