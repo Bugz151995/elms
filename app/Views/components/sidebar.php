@@ -8,34 +8,34 @@
 
   <hr class="text-white mt-0">
 
-  <ul class="nav flex-column">
+  <ul class="nav nav-pills flex-column">
     <li class="nav-item">
-      <a class="nav-link text-white active" aria-current="page" href="#"><i class="fas fa-fw fa-home"></i> Home</a>
+      <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-fw fa-home"></i> Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white" href="#"><i class="fas fa-fw fa-book"></i> Books</a>
+      <a class="nav-link" href="#"><i class="fas fa-fw fa-book"></i> Books</a>
 
       <ul class="nav flex-column ms-3">
         <li class="nav-item">
-          <a class="nav-link text-white active" aria-current="page" href="#"><i class="fas fa-fw fa-bookmark"></i> Registered Books</a>
+          <a class="nav-link" aria-current="page" href="#"><i class="fas fa-fw fa-bookmark"></i> Registered Books</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="#"><i class="fas fa-fw fa-hand-point-left"></i> Borrowed Books</a>
+          <a class="nav-link" href="#"><i class="fas fa-fw fa-hand-point-left"></i> Borrowed Books</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="#"><i class="fas fa-fw fa-hand-point-right"></i> Returned Books</a>
+          <a class="nav-link" href="#"><i class="fas fa-fw fa-hand-point-right"></i> Returned Books</a>
         </li>
       </ul>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white" href="#"><i class="fas fa-fw fa-user-group"></i> Accounts</a>
+      <a class="nav-link" href="#"><i class="fas fa-fw fa-user-group"></i> Accounts</a>
 
       <ul class="nav flex-column ms-3">
         <li class="nav-item">
-          <a class="nav-link text-white active" aria-current="page" href="#"><i class="fas fa-fw fa-users"></i> Registered Users</a>
+          <a class="nav-link" aria-current="page" href="#"><i class="fas fa-fw fa-users"></i> Registered Users</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="#"><i class="fas fa-fw fa-users-line"></i> User Rankings</a>
+          <a class="nav-link" href="#"><i class="fas fa-fw fa-users-line"></i> User Rankings</a>
         </li>
       </ul>
     </li>

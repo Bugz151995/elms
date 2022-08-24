@@ -14,9 +14,14 @@ class Page extends BaseController
      */
     public function showPage($page_name = "")
     {
+        $uri = service('uri');
+
         if ($page_name === "")
             return view('login');
 
-        return view($page_name);
+        return view(
+            $page_name,
+            ['path' => $uri->getPath()] 
+        );
     }
 }
