@@ -6,7 +6,8 @@
     <?= $this->include('components/topbar') ?>
     <?= $this->include('components/sidebar') ?>
 </header>
-<main>
+
+<main id="content">
     <?= $this->include('components/breadcrumb') ?>
 
 </main>

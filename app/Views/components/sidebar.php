@@ -1,67 +1,43 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <svg class="bi me-2" width="40" height="32">
-            <use xlink:href="#bootstrap"></use>
-        </svg>
-        <span class="fs-4">Sidebar</span>
-    </a>
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
+<div id="sidebar">
+  <a href="/" class="d-flex justify-content-center align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none p-2 gap-2">    
+    <img src="<?= base_url() ?>/gnhs_logo.png" id="logo" width="25px" alt="">
+    <span class="fs-3">
+      GNHS LMS
+    </span>
+  </a>
+
+  <hr class="text-white mt-0">
+
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link text-white active" aria-current="page" href="#"><i class="fas fa-fw fa-home"></i> Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="#"><i class="fas fa-fw fa-book"></i> Books</a>
+
+      <ul class="nav flex-column ms-3">
         <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#home"></use>
-                </svg>
-                Home
-            </a>
+          <a class="nav-link text-white active" aria-current="page" href="#"><i class="fas fa-fw fa-bookmark"></i> Registered Books</a>
         </li>
-        <li>
-            <a href="#" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#speedometer2"></use>
-                </svg>
-                Dashboard
-            </a>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#"><i class="fas fa-fw fa-hand-point-left"></i> Borrowed Books</a>
         </li>
-        <li>
-            <a href="#" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#table"></use>
-                </svg>
-                Orders
-            </a>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#"><i class="fas fa-fw fa-hand-point-right"></i> Returned Books</a>
         </li>
-        <li>
-            <a href="#" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#grid"></use>
-                </svg>
-                Products
-            </a>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="#"><i class="fas fa-fw fa-user-group"></i> Accounts</a>
+
+      <ul class="nav flex-column ms-3">
+        <li class="nav-item">
+          <a class="nav-link text-white active" aria-current="page" href="#"><i class="fas fa-fw fa-users"></i> Registered Users</a>
         </li>
-        <li>
-            <a href="#" class="nav-link text-white">
-                <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#people-circle"></use>
-                </svg>
-                Customers
-            </a>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#"><i class="fas fa-fw fa-users-line"></i> User Rankings</a>
         </li>
-    </ul>
-    <hr>
-    <div class="dropdown">
-        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>mdo</strong>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-                <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-        </ul>
-    </div>
+      </ul>
+    </li>
+  </ul>
 </div>
