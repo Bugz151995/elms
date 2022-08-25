@@ -42,6 +42,7 @@ $routes->get('borrowed_books', 'Page::showPage/borrowed_books');
 $routes->get('returned_books', 'Page::showPage/returned_books');
 $routes->get('registered_users', 'Page::showPage/registered_users');
 $routes->get('user_rankings', 'Page::showPage/user_rankings');
+$routes->get('user_fines', 'Page::showPage/user_fines');
 
 /*
  * --------------------------------------------------------------------

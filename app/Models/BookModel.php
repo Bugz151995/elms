@@ -26,4 +26,12 @@ class BookModel extends Model
     protected $validationRules    = [];
     protected $validationMessages = [];
     protected $skipValidation     = false;
+
+    public function getBooks($slug = false)
+    {
+        if ($slug === false)
+            return $this->join('category_tbl', 'book_tbl.category_id = category_tbl.category_id')->findAll();
+        
+        return $this->where(['book_id' => $slug])->first();
+    }
 }

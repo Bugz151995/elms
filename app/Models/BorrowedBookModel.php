@@ -26,4 +26,12 @@ class BorrowedBookModel extends Model
     protected $validationRules    = [];
     protected $validationMessages = [];
     protected $skipValidation     = false;
+
+    public function getBooks($slug = false)
+    {
+        if ($slug === false)
+            return $this->join('book_tbl', 'book_tbl.book_id = borrowed_book_tbl.book_id')->join('category_tbl', 'category_tbl.category_id = book_tbl.category_id')->join('student_tbl', 'student_tbl.id = borrowed_book_tbl.student_id')->findAll();
+        
+        return $this->where(['book_id' => $slug])->first();
+    }
 }

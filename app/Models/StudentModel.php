@@ -15,7 +15,7 @@ class StudentModel extends Model
     protected $useSoftDeletes = true;
 
     protected $allowedFields = [
-        'student_id','fname', 'mname', 'lname', 'grade', 'section'
+        'student_id','fname', 'mname', 'lname', 'class_id'
     ];
 
     protected $useTimestamps = true;

@@ -26,4 +26,17 @@ class AccountModel extends Model
     protected $validationRules    = [];
     protected $validationMessages = [];
     protected $skipValidation     = false;
+
+    public function getAccounts($slug = false)
+    {
+        if ($slug === false)
+            return $this->join('student_tbl', 'student_tbl.id = account_tbl.student_id')->join('class_tbl', 'class_tbl.class_id = student_tbl.class_id')->findAll();
+        
+        return $this->where(['student_id' => $slug])->first();
+    }
+
+    public function getRanks()
+    {        
+        return $this->join('student_tbl', 'student_tbl.student_id = account_tbl.student_id')->join('borrowed_book_tbl', 'borrowed_book_tbl.student_id = student_tbl.student_id')->orderBy('student')->findAll();
+    }
 }

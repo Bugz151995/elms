@@ -26,4 +26,9 @@ class AccountFineModel extends Model
     protected $validationRules    = [];
     protected $validationMessages = [];
     protected $skipValidation     = false;
+    
+    public function getFines()
+    {        
+        return $this->join('student_tbl', 'student_tbl.id = account_fine_tbl.student_id')->findAll();
+    }
 }

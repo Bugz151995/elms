@@ -40,7 +40,7 @@
           <a class="nav-link <?= isPageActive($path, 'user_rankings') ?>" href="<?= base_url() ?>/user_rankings"><i class="fas fa-fw fa-ranking-star"></i> User Rankings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= isPageActive($path, 'user_fines') ?>" href="<?= base_url() ?>/user_rankings"><i class="fas fa-fw fa-file-invoice-dollar"></i> User Fines</a>
+          <a class="nav-link <?= isPageActive($path, 'user_fines') ?>" href="<?= base_url() ?>/user_fines"><i class="fas fa-fw fa-file-invoice-dollar"></i> User Fines</a>
         </li>
       </ul>
     </li>
