@@ -9,10 +9,12 @@
 
 <main id="content">
     <?= $this->include('components/breadcrumb') ?>
+    <?= $this->include('components/create_u') ?>
 
     <table id="table" class="table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Student's Name</th>
                 <th>Username</th>
                 <th>Grade</th>
@@ -22,8 +24,9 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($users as $user) : ?>
+            <?php foreach($users as $key => $user) : ?>
             <tr>
+                <td><?= ++$key ?></td>
                 <td><?= $user['fname'].' '.substr($user['mname'], 0,1).'. '.$user['lname'] ?></td>
                 <td><?= $user['username'] ?></td>
                 <td><?= $user['grade_level'] ?></td>

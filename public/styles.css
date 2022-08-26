@@ -26,7 +26,6 @@ body {
     width: 230px;
     background-color: var(--color1);
     left: -230px;
-    z-index: 1000;
 }
 
 #breadcrumbContainer {
@@ -63,7 +62,6 @@ li a.nav-link {
         top: 0;
         left: 230px;
         width: calc(100% - 230px);
-        z-index: 1000;
     }
 
     #content {
@@ -73,7 +71,6 @@ li a.nav-link {
         padding: 1.5rem;
         width: calc(100% - 230px);
         height: calc(100% - 56px);
-        z-index: 0;
     }
 }
 

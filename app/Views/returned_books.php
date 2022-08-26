@@ -9,10 +9,12 @@
 
 <main id="content">
     <?= $this->include('components/breadcrumb') ?>
+  <?= $this->include('components/create_rb') ?>
 
     <table id="table" class="table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Book Name</th>
                 <th>Author</th>
                 <th>Category</th>
@@ -22,8 +24,9 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($books as $book) : ?>
+            <?php foreach($books as $key => $book) : ?>
             <tr>
+                <td><?= ++$key ?></td>
                 <td><?= $book['name'] ?></td>
                 <td><?= $book['author'] ?></td>
                 <td><?= $book['category'] ?></td>

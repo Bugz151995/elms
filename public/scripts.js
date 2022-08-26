@@ -15,5 +15,7 @@ sidebarBtn.addEventListener('click', function() {
 
 // data tables initialization
 $(document).ready( function () {
-    $('#table').DataTable();
+    $('#table').DataTable({
+        responsive: true
+    });
 } );

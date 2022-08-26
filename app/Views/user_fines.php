@@ -13,6 +13,7 @@
     <table id="table" class="table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Student's Name</th>
                 <th>Username</th>
                 <th>Grade</th>
@@ -24,16 +25,23 @@
             </tr>
         </thead>
         <tbody>
+            <?php foreach($fines as $key => $fine) : ?>
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td><?= ++$key ?></td>
+                <td><?= $fine['fname'].' '.substr($fine['mname'], 0, 1).'. '.$fine['lname'] ?></td>
+                <td><?= $fine['username'] ?></td>
+                <td><?= $fine['grade_level'] ?></td>
+                <td><?= $fine['section_name'] ?></td>
+                <td><?= $fine['or_no'] ?></td>
+                <td><?= $fine['amount'] ?></td>
+                <td><?= $fine['created_at'] ?></td>
+                <td>
+                    <button class="btn btn-sm btn-primary"><i class="fas fa-fw fa-edit"></i></button>
+
+                    <button class="btn btn-sm btn-danger"><i class="fas fa-fw fa-trash-alt"></i></button>
+                </td>
             </tr>
+            <?php endforeach ?>
         </tbody>
     </table>
 </main>
