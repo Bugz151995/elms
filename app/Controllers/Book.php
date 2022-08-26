@@ -63,4 +63,98 @@ class Book extends BaseController
 
         // return redirect()->to('/user_fines');
     }
+
+    /**
+     * creates a book data
+     * 
+     * @return string
+     */
+    public function update()
+    {
+        $book = model(BookModel::class);
+
+        $rules = [
+            'name' => 'required',
+            'author' => 'required',
+            'publish_date' => 'required',
+            'units' => 'required',
+            'category' => 'required',
+        ];
+
+        if ($this->validate($rules)) {
+            $book->save([
+                'book_id' => $this->request->getPost('book_id'),
+                'name' => $this->request->getPost('name'),
+                'author' => $this->request->getPost('author'),
+                'publish_date' => $this->request->getPost('publish_date'),
+                'units' => $this->request->getPost('units'),
+                'category_id' => $this->request->getPost('category'),
+            ]);
+
+            // test route if success
+            // TODO: remove later
+            // add success data to the page when it reloads and capture it through a js plguin of success popup
+            return redirect()->to('/registered_books');
+        }
+
+        // return redirect()->to('/user_fines');
+    }
+    
+    /**
+     * creates a book data
+     * 
+     * @return string
+     */
+    public function delete()
+    {
+        $book = model(BookModel::class);
+
+        $rules = [
+            'name' => 'required',
+            'author' => 'required',
+            'publish_date' => 'required',
+            'units' => 'required',
+            'category' => 'required',
+        ];
+
+        if ($this->validate($rules)) {
+            $book->save(['book_id' => $this->request->getPost('book_id')]);
+
+            // test route if success
+            // TODO: remove later
+            // add success data to the page when it reloads and capture it through a js plguin of success popup
+            return redirect()->to('/registered_books');
+        }
+
+        // return redirect()->to('/user_fines');
+    }
+
+    /**
+     * creates a book data
+     * 
+     * @return string
+     */
+    public function borrow()
+    {
+        $b_book = model(BorrowedBookModel::class);
+
+        $rules = [
+            'book_id' => 'required',
+            'student_id' => 'required'
+        ];
+
+        if ($this->validate($rules)) {
+            $b_book->save([
+                'book_id' => $this->request->getPost('book_id'),
+                'student_id' => $this->request->getPost('student_id')
+            ]);
+
+            // test route if success
+            // TODO: remove later
+            // add success data to the page when it reloads and capture it through a js plguin of success popup
+            return redirect()->to('/registered_books');
+        }
+
+        // return redirect()->to('/user_fines');
+    }
 }

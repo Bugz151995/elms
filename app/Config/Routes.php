@@ -38,7 +38,9 @@ $routes->set404Override();
 $routes->get('/', 'Page::showPage');
 $routes->get('home', 'Page::showPage/home');
 $routes->get('registered_books', 'Page::showPage/registered_books');
-$routes->get('registered_books/(:num)', 'Page::showPage/registered_books/$1');
+$routes->get('registered_books/edit_book/(:num)', 'Page::showPage/registered_books/edit_book/$1');
+$routes->get('registered_books/delete_book/(:num)', 'Page::showPage/registered_books/delete_book/$1');
+$routes->get('registered_books/borrow_book/(:num)', 'Page::showPage/registered_books/borrow_book/$1');
 $routes->get('borrowed_books', 'Page::showPage/borrowed_books');
 $routes->get('returned_books', 'Page::showPage/returned_books');
 $routes->get('registered_users', 'Page::showPage/registered_users');
@@ -46,6 +48,9 @@ $routes->get('user_rankings', 'Page::showPage/user_rankings');
 $routes->get('user_fines', 'Page::showPage/user_fines');
 
 $routes->post('registered_books/create', 'Book::create');
+$routes->post('registered_books/update', 'Book::update');
+$routes->post('registered_books/delete', 'Book::delete');
+$routes->post('registered_books/borrow', 'Book::borrow');
 
 /*
  * --------------------------------------------------------------------

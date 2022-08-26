@@ -33,9 +33,11 @@
           <td class="text-capitalize"><?= $book['category'] ?></td>
           <td class="text-capitalize"><?= $book['units'] ?></td>
           <td class="text-capitalize">            
-            <a href="<?= base_url() ?>/registered_books/<?= $book['book_id'] ?>" class="btn btn-sm btn-primary"><i class="fas fa-fw fa-edit"></i></a>
+            <a href="<?= base_url() ?>/registered_books/edit_book/<?= $book['book_id'] ?>" class="btn btn-sm btn-primary"><i class="fas fa-fw fa-edit"></i></a>    
 
-            <button class="btn btn-sm btn-danger"><i class="fas fa-fw fa-trash-alt"></i></button>
+            <a href="<?= base_url() ?>/registered_books/borrow_book/<?= $book['book_id'] ?>" class="btn btn-sm btn-success"><i class="fas fa-fw fa-book-open-reader"></i></a>
+            
+            <a href="<?= base_url() ?>/registered_books/delete_book/<?= $book['book_id'] ?>" class="btn btn-sm btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
           </td>
         </tr>
       <?php endforeach ?>

@@ -19,7 +19,7 @@ class Page extends BaseController
    * 
    * @return string
    */
-  public function showPage($page_name = "", $slug = false)
+  public function showPage($page_name = "", $type = false, $slug = false)
   {
     $uri = service('uri');
     $a_book = model(BookModel::class);
@@ -45,10 +45,14 @@ class Page extends BaseController
         break;
 
       case 'registered_books':
-        if ($slug !== false) {
-          return view('edit_rb', array_merge($path_data, ['book' => $a_book->find($slug)], $cat_data));
-        }
+        if ($slug !== false && $type === 'edit_book')
+          return view('edit_b', array_merge($path_data, ['book' => $a_book->find($slug)], $cat_data));
 
+        if ($slug !== false && $type === 'delete_book')
+          return view('delete_b', array_merge($path_data, ['book' => $a_book->find($slug)], $cat_data));
+
+        if ($slug !== false && $type === 'borrow_book')
+          return view('borrow_b', array_merge($path_data, ['book' => $a_book->find($slug)], $cat_data));
         return view($page_name, array_merge($path_data, $a_book_data, $cat_data));
         break;
 
