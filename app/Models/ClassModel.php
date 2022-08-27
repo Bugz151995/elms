@@ -26,4 +26,9 @@ class ClassModel extends Model
     protected $validationRules    = [];
     protected $validationMessages = [];
     protected $skipValidation     = false;
+
+    public function getClass()
+    {
+        return $this->findAll();
+    }
 }

@@ -30,7 +30,7 @@ class AccountModel extends Model
     public function getAccounts($slug = false)
     {
         if ($slug === false)
-            return $this->join('student_tbl', 'student_tbl.id = account_tbl.student_id')->join('class_tbl', 'class_tbl.class_id = student_tbl.class_id')->findAll();
+            return $this->join('student_tbl', 'student_tbl.student_id = account_tbl.student_id')->join('class_tbl', 'class_tbl.class_id = student_tbl.class_id')->findAll();
         
         return $this->where(['student_id' => $slug])->first();
     }

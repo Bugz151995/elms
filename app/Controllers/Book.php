@@ -7,27 +7,6 @@ use \App\Models\BookModel;
 class Book extends BaseController
 {
     protected $helpers = ['form'];
-    
-    /**
-     * @param Type|null $var
-     * 
-     * @return [type]
-     */
-    public function lookup($page_name, $slug = false)
-    {        
-        $uri = service('uri');
-        $a_book = model(BookModel::class);
-        $cat = model(CategoryModel::class);
-
-        $path = $uri->getPath();
-
-        return view($page_name, [
-            'books' => $a_book->getBooks(),
-            'book_found' => $a_book->find($slug),
-            'categories' => $cat->getCategories(),
-            'path'  => $path
-        ]);
-    }
 
     /**
      * creates a book data
