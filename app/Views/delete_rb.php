@@ -27,8 +27,8 @@
       <input type="date" class="form-control" id="publishDate" value="<?= $book['publish_date'] ?>" name="publish_date" placeholder="Example input placeholder" disabled>
     </div>
     <div class="col-12 col-md-4">
-      <label for="units" class="form-label">Units</label>
-      <input type="number" min="0" class="form-control" id="units" value="<?= $book['units'] ?>" name="units" placeholder="Example input placeholder" disabled>
+      <label for="items" class="form-label">Units</label>
+      <input type="number" min="0" class="form-control" id="items" value="<?= $book['items'] ?>" name="items" placeholder="Example input placeholder" disabled>
     </div>
     <div class="col-12 col-md-4">
       <label for="category" class="form-label">Category</label>
