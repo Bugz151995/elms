@@ -9,8 +9,24 @@
     <?= $this->include('assets/links') ?>
 </head>
 <body>
+    
     <?= $this->renderSection('content') ?>
     
     <?= $this->include('assets/scripts') ?>
+    <?php if(isset($_SESSION['success'])):?>
+        <script>successToast('<?= $_SESSION['success'] ?>');</script>
+    <?php endif ?>
+
+    <?php if(isset($_SESSION['error'])): ?>
+        <script>errorToast('<?= $_SESSION['error'] ?>');</script>
+    <?php endif ?>
+
+    <?php if(isset($_SESSION['warning'])): ?>
+        <script>warningToast('<?= $_SESSION['warning'] ?>');</script>
+    <?php endif ?>
+
+    <?php if(isset($_SESSION['info'])): ?>
+        <script>infoToast('<?= $_SESSION['info'] ?>');</script>
+    <?php endif ?>
 </body>
 </html>

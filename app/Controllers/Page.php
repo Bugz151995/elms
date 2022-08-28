@@ -6,9 +6,11 @@ use \App\Models\BookModel;
 use \App\Models\BorrowedBookModel;
 use \App\Models\ReturnedBookModel;
 use \App\Models\CategoryModel;
+use \App\Models\StudentModel;
 use \App\Models\AccountModel;
 use \App\Models\AccountFineModel;
 use \App\Models\ClassModel;
+use CodeIgniter\I18n\Time;
 
 class Page extends BaseController
 {
@@ -22,11 +24,13 @@ class Page extends BaseController
    */
   public function showPage($page_name = "", $type = false, $slug = false)
   {
+    session();
     $uri = service('uri');
     $a_book = model(BookModel::class);
     $b_book = model(BorrowedBookModel::class);
     $r_book = model(ReturnedBookModel::class);
     $cat = model(CategoryModel::class);
+    $student = model(StudentModel::class);
     $user = model(AccountModel::class);
     $fine = model(AccountFineModel::class);
     $class = model(ClassModel::class);
@@ -34,10 +38,12 @@ class Page extends BaseController
     $path = $uri->getPath();
 
     $path_data = ['path' => $path];
+    $time_data = ['time' => new Time('now')];
     $a_book_data = ['books' => $a_book->getBooks()];
     $b_book_data = ['books' => $b_book->getBooks()];
     $r_book_data = ['books' => $r_book->getBooks()];
     $user_data = ['users' => $user->getAccounts()];
+    $student_data = ['students' => $student->getStudents()];
     $fine_data = ['fines' => $fine->getFines()];
     $cat_data = ['categories' => $cat->getCategories()];
     $class_data = ['class' => $class->getClass()];
@@ -58,7 +64,7 @@ class Page extends BaseController
           return view('delete_b', array_merge($path_data, $book_data, $cat_data));
 
         if ($slug !== false && $type === 'borrow_book')
-          return view('borrow_b', array_merge($path_data, $book_data, $cat_data));
+          return view('borrow_b', array_merge($path_data, $book_data, $cat_data, $student_data));
 
         return view($page_name, array_merge($path_data, $a_book_data, $cat_data));
         break;
@@ -68,10 +74,10 @@ class Page extends BaseController
           $book_data = ['book' => $b_book->join('book_tbl', 'book_tbl.book_id = borrowed_book_tbl.book_id')->join('student_tbl', 'student_tbl.student_id = borrowed_book_tbl.student_id')->join('class_tbl', 'class_tbl.class_id = student_tbl.class_id')->find($slug)];
 
         if ($slug !== false && $type === 'edit_borrowed_book')
-          return view('edit_bb', array_merge($path_data, $book_data, $cat_data));
+          return view('edit_bb', array_merge($path_data, $book_data, $cat_data, $student_data));
 
         if ($slug !== false && $type === 'return_borrowed_book')
-          return view('update_bb', array_merge($path_data, $book_data, $cat_data));
+          return view('update_bb', array_merge($path_data, $book_data, $cat_data, $time_data));
 
         if ($slug !== false && $type === 'delete_borrowed_book')
           return view('delete_bb', array_merge($path_data, $book_data, $cat_data));
@@ -80,6 +86,15 @@ class Page extends BaseController
         break;
 
       case 'returned_books':
+        if ($slug !== false) 
+          $book_data = ['book' => $r_book->join('book_tbl', 'book_tbl.book_id = returned_book_tbl.book_id')->join('student_tbl', 'student_tbl.student_id = returned_book_tbl.student_id')->join('class_tbl', 'class_tbl.class_id = student_tbl.class_id')->find($slug)];
+
+        if ($slug !== false && $type === 'view_returned_book')
+          return view('view_rb', array_merge($path_data, $book_data, $cat_data));
+
+        if ($slug !== false && $type === 'delete_returned_book')
+          return view('delete_rb', array_merge($path_data, $book_data, $cat_data));
+
         return view($page_name, array_merge($r_book_data, $path_data));
         break;
 
@@ -101,11 +116,20 @@ class Page extends BaseController
         break;
 
       case 'user_fines':
+        if ($slug !== false)
+          $fine_data = ['fine' => $fine->join('student_tbl', 'student_tbl.student_id = account_fine_tbl.student_id')->join('account_tbl', 'account_tbl.student_id = student_tbl.student_id')->join('class_tbl', 'class_tbl.class_id = student_tbl.class_id')->find($slug)];
+
+        if ($slug !== false && $type === 'view_user_fine')
+          return view('view_uf', array_merge($fine_data, $path_data, $class_data));
+
+        if ($slug !== false && $type === 'delete_user_fine')
+          return view('delete_uf', array_merge($fine_data, $path_data, $class_data));
+
         return view($page_name, array_merge($fine_data, $path_data));
         break;
 
       default:
-        return view('login');
+        return view('signin');
         break;
     }
   }

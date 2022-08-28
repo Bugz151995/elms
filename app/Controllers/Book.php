@@ -21,7 +21,7 @@ class Book extends BaseController
             'name' => 'required',
             'author' => 'required',
             'publish_date' => 'required',
-            'units' => 'required',
+            'items' => 'required',
             'category' => 'required',
         ];
 
@@ -30,21 +30,20 @@ class Book extends BaseController
                 'name' => $this->request->getPost('name'),
                 'author' => $this->request->getPost('author'),
                 'publish_date' => $this->request->getPost('publish_date'),
-                'units' => $this->request->getPost('units'),
+                'items' => $this->request->getPost('items'),
                 'category_id' => $this->request->getPost('category'),
             ]);
 
-            // test route if success
-            // TODO: remove later
-            // add success data to the page when it reloads and capture it through a js plguin of success popup
-            return redirect()->to('/home');
+            session()->setFlashdata('success', 'The book was successfully saved.');
+
+            return redirect()->to('/registered_books');
         }
 
-        // return redirect()->to('/user_fines');
+        return redirect()->back()->with('validation', $this->validator);
     }
 
     /**
-     * creates a book data
+     * edit a book data
      * 
      * @return string
      */
@@ -70,17 +69,16 @@ class Book extends BaseController
                 'category_id' => $this->request->getPost('category'),
             ]);
 
-            // test route if success
-            // TODO: remove later
-            // add success data to the page when it reloads and capture it through a js plguin of success popup
+            session()->setFlashdata('success', 'The book was successfully saved.');
+
             return redirect()->to('/registered_books');
         }
 
-        // return redirect()->to('/user_fines');
+        return redirect()->back()->with('validation', $this->validator);
     }
     
     /**
-     * creates a book data
+     * deletes a borrowed book data
      * 
      * @return string
      */
@@ -88,28 +86,21 @@ class Book extends BaseController
     {
         $book = model(BookModel::class);
 
-        $rules = [
-            'name' => 'required',
-            'author' => 'required',
-            'publish_date' => 'required',
-            'units' => 'required',
-            'category' => 'required',
-        ];
+        if ($this->validate(['book_id' => 'required'])) {
+            $book->delete(['book_id' => $this->request->getPost('book_id')]);
 
-        if ($this->validate($rules)) {
-            $book->save(['book_id' => $this->request->getPost('book_id')]);
+            session()->setFlashdata('success', 'The book was successfully deleted.');
 
-            // test route if success
-            // TODO: remove later
-            // add success data to the page when it reloads and capture it through a js plguin of success popup
+            session()->setFlashdata('warning', 'Please be cautious when deleting a data.');
+
             return redirect()->to('/registered_books');
         }
 
-        // return redirect()->to('/user_fines');
+        return redirect()->back()->with('validation', $this->validator);
     }
 
     /**
-     * creates a book data
+     * creates a borrowed book data
      * 
      * @return string
      */
@@ -128,12 +119,13 @@ class Book extends BaseController
                 'student_id' => $this->request->getPost('student_id')
             ]);
 
-            // test route if success
-            // TODO: remove later
-            // add success data to the page when it reloads and capture it through a js plguin of success popup
+            session()->setFlashdata('success', 'The book was successfully saved.');
+
+            session()->setFlashdata('info', 'The book was saved as a borrowed book.');
+
             return redirect()->to('/registered_books');
         }
 
-        // return redirect()->to('/user_fines');
+        return redirect()->back()->with('validation', $this->validator);
     }
 }

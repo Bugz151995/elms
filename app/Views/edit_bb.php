@@ -11,8 +11,10 @@
   <?= $this->include('components/breadcrumb') ?>
 
   <?= form_open('borrowed_books/update') ?>
+  <?= form_hidden('book_id', $book['book_id']) ?>
   <?= form_hidden('borrowed_book_id', $book['borrowed_book_id']) ?>
-  <div class="row g-4 m-auto border p-3" style="max-width: 700px">
+  <div class="row g-4 m-auto border p-3 bg-light" style="max-width: 700px">
+    <div class="col-12 border-bottom"><h3><i class="fas fa fa-fw fa-edit"></i> Edit Borrowed Book Form</h3></div>
     <div class="col-12 col-md-6">
       <label for="bookName" class="form-label">Book Name</label>
       <input type="text" class="form-control" id="bookName" value="<?= $book['name'] ?>" name="name" placeholder="Example input placeholder" disabled>
@@ -52,7 +54,8 @@
     </div>
     <div class="col-12">
       <label for="student_id" class="form-label">Borrower's Student ID</label>
-      <input type="number" min="0" class="form-control" id="student_id" value="<?= $book['student_id'] ?>" name="student_id" placeholder="Example input placeholder">
+      <input type="number" min="0" class="form-control" id="studentId" value="<?= $book['student_id'] ?>" name="student_id" placeholder="Example input placeholder">
+      <?= isset($_SESSION['validation']) ? $_SESSION['validation']->showError('student_id', 'single') : null ?>
     </div>
     <div class="d-flex justify-content-between pb-2">
       <a href="<?= base_url() ?>/borrowed_books" class="btn btn-secondary" style="max-width: 300px"><i class="fas fa-fw fa-times"></i> Cancel</a>
@@ -62,5 +65,12 @@
   </div>
   <?= form_close() ?>
 </main>
+
+<script>
+  // initialize autocomplete plugin
+  document.addEventListener('DOMContentLoaded', function(){
+    autocompleteInit('#studentId', 'Enter Student ID...', <?php foreach($students as $student){echo $student['student_id'].',';} ?>);
+  });
+</script>
 
 <?= $this->endSection() ?>

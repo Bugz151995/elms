@@ -12,7 +12,8 @@
 
   <?= form_open('registered_users/delete') ?>
   <?= form_hidden('account_id', $user['account_id']) ?>
-  <div class="row g-4 m-auto border p-3" style="max-width: 700px">
+  <div class="row g-4 m-auto border p-3 bg-light" style="max-width: 700px">
+    <div class="col-12 border-bottom"><h3><i class="fas fa fa-fw fa-trash-alt"></i> Delete Registered User Form</h3></div>
     <div class="col-12">
       <label for="studentId" class="form-label">Student ID</label>
       <input type="text" class="form-control" id="studentId" name="student_id" value="<?= $user['student_id'] ?>" placeholder="Example input placeholder" disabled>

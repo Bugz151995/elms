@@ -11,7 +11,7 @@
     <?= $this->include('components/breadcrumb') ?>
   <?= $this->include('components/create_rb') ?>
 
-    <table id="table" class="table">
+    <table id="table" class="table table-light table-striped">
         <thead>
             <tr>
                 <th>#</th>
@@ -19,8 +19,8 @@
                 <th>Author</th>
                 <th>Category</th>
                 <th>Borrower's Name</th>
-                <th>Borrowed @</th>
-                <th>Action</th>
+                <th>Returned @</th>
+                <th class="text-center">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -32,10 +32,10 @@
                 <td><?= $book['category'] ?></td>
                 <td><?= $book['fname'].' '.substr($book['mname'], 0,1).'. '.$book['lname'] ?></td>
                 <td><?= $book['created_at'] ?></td>
-                <td>
-                    <button class="btn btn-sm btn-primary"><i class="fas fa-fw fa-edit"></i></button>
+                <td class="text-center">
+                    <a href="<?= base_url() ?>/returned_books/view_returned_book/<?= $book['returned_book_id'] ?>" class="btn btn-sm btn-primary"><i class="fas fa-fw fa-eye"></i></a>
 
-                    <button class="btn btn-sm btn-danger"><i class="fas fa-fw fa-trash-alt"></i></button>
+                    <a href="<?= base_url() ?>/returned_books/delete_returned_book/<?= $book['returned_book_id'] ?>" class="btn btn-sm btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
                 </td>
             </tr>
             <?php endforeach ?>

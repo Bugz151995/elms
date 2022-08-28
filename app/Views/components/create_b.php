@@ -28,8 +28,8 @@
           <input type="date" class="form-control" id="publishDate" name="publish_date" placeholder="Example input placeholder">
         </div>
         <div class="mb-3">
-          <label for="units" class="form-label">Units</label>
-          <input type="number" min="0" class="form-control" id="units" name="units" placeholder="Example input placeholder">
+          <label for="items" class="form-label">Items</label>
+          <input type="number" min="0" class="form-control" id="items" name="items" placeholder="Example input placeholder">
         </div>
         <div class="mb-3">
           <label for="category" class="form-label">Category</label>

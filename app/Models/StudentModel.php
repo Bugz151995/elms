@@ -26,4 +26,18 @@ class StudentModel extends Model
     protected $validationRules    = [];
     protected $validationMessages = [];
     protected $skipValidation     = false;
+
+    /**
+     * returns an array of all the student data or a specific student
+     * @param int $slug
+     * 
+     * @return array
+     */
+    public function getStudents($slug = false)
+    {
+        if($slug !== false)
+            return $this->find($slug);
+        
+        return $this->findAll();
+    }
 }

@@ -12,20 +12,80 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+h2 {    
+    font-size: 18px;
+    margin: 0;
+    font-family: 'Merriweather', sans-serif;
+}
+
+h3 {
+    font-size: 1.5em;
+    padding-bottom: 0.8rem;
+}
+
 :root {
-    --color1: #38023B;
+    --color1: #283044;
     --color2: #A288E3;
     --color3: #BBD5ED;
     --color4: #CEFDFF;
     --color5: #CCFFCB;
+    --color6: #A99F96;
 }
 
 #sidebar {
     position: fixed;
     height: 100vh;
-    width: 230px;
+    width: 280px;
     background-color: var(--color1);
-    left: -230px;
+    left: -280px;
+    z-index: 1;
+    transition: 0.2s ease-in;
+}
+
+#sidebar.closedSidebar {
+    left: -280px;
+}
+
+#sidebar.openedSidebar {
+    left: 0;
+}
+
+#topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    transition: 0.2s ease-in;
+}
+
+#topbar.closedSidebar {
+    left: 0px;
+    width: 100%;
+}
+
+#topbar.openedSidebar {
+    left: 280px;
+    width: calc(100% - 280px);
+}
+
+#content {
+    position: absolute;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    transition: 0.2s ease-in;
+}
+
+#content.closedSidebar {
+    left: 0px;
+    width: 100%;
+}
+
+#content.openedSidebar {
+    left: 280px;
+    width: calc(100% - 280px);
 }
 
 #breadcrumbContainer {
@@ -33,22 +93,46 @@ body {
     align-items: center;
 }
 
-#brandName {
-    font-family: 'Merriweather', serif;
-}
-
-#schoolName {
-    font-family: 'Merriweather', serif;
-}
-
 #pageTitle {
     font-size: 18px;
     margin: 0;
-    font-family: 'Merriweather', serif;
+    font-family: 'Merriweather', sans-serif;
 }
 
 li a.nav-link {
     color: white;
+}
+
+/* error */
+.help-block {
+    font-size: small;
+    color: red;
+}
+
+.help-block::before {
+    content: '* ';
+}
+
+/* autocomplete */
+.autoComplete_wrapper {
+    width: 100%;
+}
+
+.autoComplete_wrapper>ul>li mark {
+    background-color: transparent;
+    color: #000;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#studentId.form-control {
+    width: 100%!important;
+}
+
+/* datatables */
+.dataTables_empty {
+    height: 400px;
+    vertical-align: middle;
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -58,18 +142,13 @@ li a.nav-link {
     }
 
     #topbar {
-        position: fixed;
-        top: 0;
-        left: 230px;
-        width: calc(100% - 230px);
+        left: 280px;
+        width: calc(100% - 280px);
     }
 
     #content {
-        position: absolute;
-        top: 56px;
-        left: 230px;
-        padding: 1.5rem;
-        width: calc(100% - 230px);
+        left: 280px;
+        width: calc(100% - 280px);
         height: calc(100% - 56px);
     }
 }

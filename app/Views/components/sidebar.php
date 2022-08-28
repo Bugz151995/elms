@@ -10,10 +10,11 @@
 
   <hr class="text-white mt-0">
 
-  <ul class="nav nav-pills flex-column">
+  <ul class="nav nav-pills flex-column ps-3 pe-3">
     <li class="nav-item">
       <a class="nav-link <?= isPageActive($path, 'home') ?>" href="<?= base_url() ?>/home"><i class="fas fa-fw fa-house-chimney"></i> Home</a>
     </li>
+    <hr class="text-white w-75 ms-4">
     <li class="nav-item">
       <a class="nav-link" href="<?= base_url() ?>/registered_books"><i class="fas fa-fw fa-swatchbook"></i> Books</a>
 
@@ -29,6 +30,7 @@
         </li>
       </ul>
     </li>
+    <hr class="text-white w-75 ms-4">
     <li class="nav-item">
       <a class="nav-link" href="<?= base_url() ?>/registered_users"><i class="fas fa-fw fa-user-group"></i> Accounts</a>
 
@@ -43,6 +45,10 @@
           <a class="nav-link <?= isPageActive($path, 'user_fines') ?>" href="<?= base_url() ?>/user_fines"><i class="fas fa-fw fa-file-invoice-dollar"></i> User Fines</a>
         </li>
       </ul>
+    </li>
+    <hr class="text-white w-75 ms-4">
+    <li class="nav-item">
+      <a class="nav-link" href="<?= base_url() ?>/signout"><i class="fas fa-fw fa-right-from-bracket"></i> Sign out</a>
     </li>
   </ul>
 </div>

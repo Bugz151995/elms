@@ -36,6 +36,8 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Page::showPage');
+$routes->get('signout', 'Account::signout');
+$routes->post('signin', 'Account::signin');
 $routes->get('home', 'Page::showPage/home');
 $routes->get('registered_books', 'Page::showPage/registered_books');
 $routes->get('registered_books/edit_book/(:num)', 'Page::showPage/registered_books/edit_book/$1');
@@ -48,13 +50,18 @@ $routes->get('borrowed_books/return_borrowed_book/(:num)', 'Page::showPage/borro
 $routes->get('borrowed_books/delete_borrowed_book/(:num)', 'Page::showPage/borrowed_books/delete_borrowed_book/$1');
 
 $routes->get('returned_books', 'Page::showPage/returned_books');
+$routes->get('returned_books/view_returned_book/(:num)', 'Page::showPage/returned_books/view_returned_book/$1');
+$routes->get('returned_books/delete_returned_book/(:num)', 'Page::showPage/returned_books/delete_returned_book/$1');
 
 $routes->get('registered_users', 'Page::showPage/registered_users');
 $routes->get('registered_users/edit_user/(:num)', 'Page::showPage/registered_users/edit_user/$1');
 $routes->get('registered_users/delete_user/(:num)', 'Page::showPage/registered_users/delete_user/$1');
 
 $routes->get('user_rankings', 'Page::showPage/user_rankings');
+
 $routes->get('user_fines', 'Page::showPage/user_fines');
+$routes->get('user_fines/view_user_fine/(:num)', 'Page::showPage/user_fines/view_user_fine/$1');
+$routes->get('user_fines/delete_user_fine/(:num)', 'Page::showPage/user_fines/delete_user_fine/$1');
 
 $routes->post('registered_books/create', 'Book::create');
 $routes->post('registered_books/update', 'Book::update');
@@ -63,6 +70,10 @@ $routes->post('registered_books/borrow', 'Book::borrow');
 
 $routes->post('borrowed_books/update', 'BorrowedBook::update');
 $routes->post('borrowed_books/delete', 'BorrowedBook::delete');
+
+$routes->post('returned_books/delete', 'ReturnedBook::delete');
+
+$routes->post('user_fines/delete', 'AccountFine::delete');
 
 $routes->post('registered_users/create', 'Account::create');
 $routes->post('registered_users/update', 'Account::update');

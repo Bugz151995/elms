@@ -11,7 +11,7 @@
   <?= $this->include('components/breadcrumb') ?>
   <?= $this->include('components/create_bb') ?>
 
-  <table id="table" class="table">
+  <table id="table" class="table table-light table-striped">
     <thead>
       <tr>
         <th>#</th>
@@ -20,7 +20,8 @@
         <th>Category</th>
         <th>Borrower's Name</th>
         <th>Borrowed @</th>
-        <th>Action</th>
+        <th>Due @</th>
+        <th class="text-center">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -32,7 +33,8 @@
           <td><?= $book['category'] ?></td>
           <td><?= $book['fname'] . ' ' . substr($book['mname'], 0, 1) . '. ' . $book['lname'] ?></td>
           <td><?= $book['created_at'] ?></td>
-          <td>
+          <td><?= $book['due_at'] ?></td>
+          <td class="text-center">
             <a href="<?= base_url() ?>/borrowed_books/edit_borrowed_book/<?= $book['borrowed_book_id'] ?>" class="btn btn-sm btn-primary"><i class="fas fa-fw fa-edit"></i></a>
 
             <a href="<?= base_url() ?>/borrowed_books/return_borrowed_book/<?= $book['borrowed_book_id'] ?>" class="btn btn-sm btn-warning"><i class="fas fa-fw fa-square-caret-left"></i></a>

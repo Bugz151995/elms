@@ -10,7 +10,31 @@ class Account extends BaseController
     protected $helpers = ['form'];  
 
     /**
-     * creates a book data
+     * signout from the system
+     * @return string
+     */
+    public function signout()
+    {
+        session()->destroy();
+        return redirect()->to('/');
+    }
+
+    /**
+     * signin to the system
+     * @return string
+     */
+    public function signin()
+    {        
+        $validation = \Config\Services::validation();
+
+        if (!$this->validate($validation->getRuleGroup('signin_rules')))
+            return view('signin', ['validation' => $this->validator]);
+
+        return redirect()->to('/home');
+    }
+
+    /**
+     * creates an account data
      * 
      * @return string
      */
@@ -44,17 +68,17 @@ class Account extends BaseController
                 'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
                 'student_id' => $this->request->getPost('student_id')
             ]);
-            // test route if success
-            // TODO: remove later
-            // add success data to the page when it reloads and capture it through a js plguin of success popup
+            
+            session()->setFlashdata('success', 'A new user was successfully created.');
+
             return redirect()->to('/registered_users');
         }
 
-        // return redirect()->to('/user_fines');
+        return redirect()->back()->with('validation', $this->validator);
     }
 
     /**
-     * creates a book data
+     * updates an account data
      * 
      * @return string
      */
@@ -87,19 +111,19 @@ class Account extends BaseController
                 'username' => $this->request->getPost('username'),
                 'student_id' => $this->request->getPost('student_id')
             ]);
-            // test route if success
-            // TODO: remove later
-            // add success data to the page when it reloads and capture it through a js plguin of success popup
+            
+            session()->setFlashdata('success', 'The User data was successfully saved.');
+
             return redirect()->to('/registered_users');
         }
 
-        // return redirect()->to('/user_fines');
+        return redirect()->back()->with('validation', $this->validator);
     }
 
     
 
     /**
-     * creates a book data
+     * deletes an account data
      * 
      * @return string
      */
@@ -109,12 +133,14 @@ class Account extends BaseController
 
         if ($this->validate(['account_id' => 'required'])) {            
             $account->delete(['account_id' => $this->request->getPost('account_id')]);
-            // test route if success
-            // TODO: remove later
-            // add success data to the page when it reloads and capture it through a js plguin of success popup
+            
+            session()->setFlashdata('success', 'The User data was successfully deleted.');
+
+            session()->setFlashdata('warning', 'Please be cautious when deleting a data.');
+
             return redirect()->to('/registered_users');
         }
 
-        // return redirect()->to('/user_fines');
+        return redirect()->back()->with('validation', $this->validator);
     }
 }

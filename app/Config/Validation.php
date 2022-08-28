@@ -7,6 +7,7 @@ use CodeIgniter\Validation\CreditCardRules;
 use CodeIgniter\Validation\FileRules;
 use CodeIgniter\Validation\FormatRules;
 use CodeIgniter\Validation\Rules;
+use App\Validation\SigninRules;
 
 class Validation extends BaseConfig
 {
@@ -25,6 +26,7 @@ class Validation extends BaseConfig
         FormatRules::class,
         FileRules::class,
         CreditCardRules::class,
+        SigninRules::class
     ];
 
     /**
@@ -41,4 +43,19 @@ class Validation extends BaseConfig
     //--------------------------------------------------------------------
     // Rules
     //--------------------------------------------------------------------
+    public $signin_rules = [
+        'username' => [
+            'rules' => 'required|user_exists[username]',
+            'errors' => [
+                'user_exists' => 'Oops! username not found.'
+            ]
+        ],
+        'password' => [
+            'rules' => 'required|password_matches[username, password]',
+            'errors' => [
+                'password_matches' => 'Oh no! Incorrect password.',
+                // 'login_attempt' => 'Max login attempt has been reached, try again later.'
+            ]
+        ]
+    ];
 }

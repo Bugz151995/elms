@@ -10,16 +10,17 @@
 <main id="content">
     <?= $this->include('components/breadcrumb') ?>
 
-    <table id="table" class="table">
+    <table id="table" class="table table-light table-striped">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Rank</th>
                 <th>Student's Name</th>
                 <th>Grade</th>
                 <th>Section</th>
                 <th>Username</th>
                 <th>Registered @</th>
-                <th>Action</th>
+                <th class="text-center">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,7 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
+                <td class="text-center">&nbsp;</td>
             </tr>
         </tbody>
     </table>

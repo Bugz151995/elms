@@ -29,6 +29,6 @@ class AccountFineModel extends Model
     
     public function getFines()
     {        
-        return $this->join('student_tbl', 'student_tbl.id = account_fine_tbl.student_id')->findAll();
+        return $this->join('student_tbl', 'student_tbl.student_id = account_fine_tbl.student_id')->join('account_tbl', 'account_tbl.student_id = student_tbl.student_id')->join('class_tbl', 'class_tbl.class_id = student_tbl.class_id')->findAll();
     }
 }

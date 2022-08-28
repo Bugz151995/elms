@@ -11,7 +11,7 @@
   <?= $this->include('components/breadcrumb') ?>
   <?= $this->include('components/create_u') ?>
 
-  <table id="table" class="table">
+  <table id="table" class="table table-light table-striped">
     <thead>
       <tr>
         <th>#</th>
@@ -20,7 +20,7 @@
         <th>Grade</th>
         <th>Section</th>
         <th>Registered @</th>
-        <th>Action</th>
+        <th class="text-center">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -32,7 +32,7 @@
           <td><?= $user['grade_level'] ?></td>
           <td><?= $user['section_name'] ?></td>
           <td><?= $user['created_at'] ?></td>
-          <td>      
+          <td class="text-center">      
             <a href="<?= base_url() ?>/registered_users/edit_user/<?= $user['account_id'] ?>" class="btn btn-sm btn-primary"><i class="fas fa-fw fa-edit"></i></a>    
             
             <a href="<?= base_url() ?>/registered_users/delete_user/<?= $user['account_id'] ?>" class="btn btn-sm btn-danger"><i class="fas fa-fw fa-trash-alt"></i></a>

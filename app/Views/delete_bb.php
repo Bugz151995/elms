@@ -14,7 +14,8 @@
   <?= form_hidden('borrowed_book_id', $book['borrowed_book_id']) ?>
   <?= form_hidden('student_id', $book['student_id']) ?>
   <?= form_hidden('book_id', $book['book_id']) ?>
-  <div class="row g-4 m-auto border p-3" style="max-width: 700px">
+  <div class="row g-4 m-auto border p-3 bg-light" style="max-width: 700px">
+    <div class="col-12 border-bottom"><h3><i class="fas fa fa-fw fa-trash-alt"></i> Delete Book Form</h3></div>
     <div class="col-12 col-md-6">
       <label for="bookName" class="form-label">Book Name</label>
       <input type="text" class="form-control" id="bookName" value="<?= $book['name'] ?>" name="name" placeholder="Example input placeholder" disabled>

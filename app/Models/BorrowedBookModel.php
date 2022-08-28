@@ -15,7 +15,7 @@ class BorrowedBookModel extends Model
     protected $useSoftDeletes = true;
 
     protected $allowedFields = [
-        'is_returned','book_id', 'student_id'
+        'is_returned','book_id', 'student_id', 'due_at'
     ];
 
     protected $useTimestamps = true;
