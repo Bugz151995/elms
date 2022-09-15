@@ -15,7 +15,7 @@ class BookModel extends Model
     protected $useSoftDeletes = true;
 
     protected $allowedFields = [
-        'name', 'author', 'publish_date', 'items', 'category_id'
+        'name', 'author', 'publish_date', 'units', 'units_athand', 'category_id'
     ];
 
     protected $useTimestamps = true;

@@ -24,13 +24,13 @@ class BorrowedBook extends BaseController
         if ($this->validate(['student_id' => 'required'])) {
             $b_book->save([
                 'book_id' => $this->request->getPost('book_id'),
-                'borrowed_book_id' => $this->request->getPost('borrowed_book_id'),
-                'is_returned' => 1
+                'borrowed_book_id' => $this->request->getPost('borrowed_book_id')
             ]);
 
             $r_book->save([
                 'book_id' => $this->request->getPost('book_id'),
-                'student_id' => $this->request->getPost('student_id')
+                'student_id' => $this->request->getPost('student_id'),
+                'units' => $this->request->getPost('unitsReturned'),
             ]);
 
             $amount = $this->request->getPost('amount');

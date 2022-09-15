@@ -8,7 +8,7 @@ class SigninRules {
   public function user_exists(string $str, string $fields, array $data) : bool {
     $model = model(AccountModel::class);
 
-    $user = $model->where('username', $data['username'])->where('admin_id', !null)->first();
+    $user = $model->where('username', $data['username'])->where('role', 'admin')->first();
 
     return (!$user) ? false : true;
   }
@@ -16,8 +16,8 @@ class SigninRules {
   public function password_matches(string $str, string $fields, array $data) : bool {
     $model = model(AccountModel::class);
 
-    $user = $model->where('username', $data['username'])->where('admin_id', !null)->first();
-
+    $user = $model->where('username', $data['username'])->where('role', 'admin')->first();
+    
     return (!$user) ? false : password_verify($data['password'], $user['password']);
   }
 

@@ -7,7 +7,7 @@ use \App\Models\StudentModel;
 
 class Account extends BaseController
 {
-    protected $helpers = ['form'];  
+    protected $helpers = ['form'];
 
     /**
      * signout from the system
@@ -24,11 +24,18 @@ class Account extends BaseController
      * @return string
      */
     public function signin()
-    {        
+    {
         $validation = \Config\Services::validation();
+        $model = model(AccountModel::class);
 
         if (!$this->validate($validation->getRuleGroup('signin_rules')))
             return view('signin', ['validation' => $this->validator]);
+
+        $admin = $model->join('admin_tbl', 'admin_tbl.admin_id = account_tbl.admin_id')->where('username', $this->request->getPost('username'))->where('role', 'admin')->first();
+
+        session()->set('fname', $admin['fname']);
+        session()->set('mname', $admin['mname']);
+        session()->set('lname', $admin['lname']);
 
         return redirect()->to('/home');
     }
@@ -68,7 +75,7 @@ class Account extends BaseController
                 'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
                 'student_id' => $this->request->getPost('student_id')
             ]);
-            
+
             session()->setFlashdata('success', 'A new user was successfully created.');
 
             return redirect()->to('/registered_users');
@@ -105,13 +112,13 @@ class Account extends BaseController
                 'lname' => $this->request->getPost('lname'),
                 'class_id' => $this->request->getPost('class'),
             ]);
-            
+
             $account->save([
                 'account_id' => $this->request->getPost('account_id'),
                 'username' => $this->request->getPost('username'),
                 'student_id' => $this->request->getPost('student_id')
             ]);
-            
+
             session()->setFlashdata('success', 'The User data was successfully saved.');
 
             return redirect()->to('/registered_users');
@@ -120,7 +127,7 @@ class Account extends BaseController
         return redirect()->back()->with('validation', $this->validator);
     }
 
-    
+
 
     /**
      * deletes an account data
@@ -131,9 +138,9 @@ class Account extends BaseController
     {
         $account = model(AccountModel::class);
 
-        if ($this->validate(['account_id' => 'required'])) {            
+        if ($this->validate(['account_id' => 'required'])) {
             $account->delete(['account_id' => $this->request->getPost('account_id')]);
-            
+
             session()->setFlashdata('success', 'The User data was successfully deleted.');
 
             session()->setFlashdata('warning', 'Please be cautious when deleting a data.');

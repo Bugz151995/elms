@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use \App\Models\BookModel;
+use CodeIgniter\I18n\Time;
 
 class Book extends BaseController
 {
@@ -21,7 +22,7 @@ class Book extends BaseController
             'name' => 'required',
             'author' => 'required',
             'publish_date' => 'required',
-            'items' => 'required',
+            'units' => 'required',
             'category' => 'required',
         ];
 
@@ -30,8 +31,8 @@ class Book extends BaseController
                 'name' => $this->request->getPost('name'),
                 'author' => $this->request->getPost('author'),
                 'publish_date' => $this->request->getPost('publish_date'),
-                'items' => $this->request->getPost('items'),
-                'category_id' => $this->request->getPost('category'),
+                'units' => $this->request->getPost('units'),
+                'category_id' => $this->request->getPost('category')
             ]);
 
             session()->setFlashdata('success', 'The book was successfully saved.');
@@ -106,17 +107,27 @@ class Book extends BaseController
      */
     public function borrow()
     {
+        $time = new Time('now');
+        $book = model(BookModel::class);
         $b_book = model(BorrowedBookModel::class);
 
         $rules = [
             'book_id' => 'required',
-            'student_id' => 'required'
+            'student_id' => 'required',
+            'units_borrowed' => 'required'
         ];
 
         if ($this->validate($rules)) {
             $b_book->save([
                 'book_id' => $this->request->getPost('book_id'),
-                'student_id' => $this->request->getPost('student_id')
+                'student_id' => $this->request->getPost('student_id'),
+                'units_borrowed' => $this->request->getPost('units_borrowed'),
+                'due_at' => $time->addDays(7)->toDateTimeString()
+            ]);
+
+            $book->save([
+                'book_id' => $this->request->getPost('book_id'),
+                'units_athand' => $this->request->getPost('units_athand') - $this->request->getPost('units_borrowed')
             ]);
 
             session()->setFlashdata('success', 'The book was successfully saved.');

@@ -15,7 +15,7 @@ class BorrowedBookModel extends Model
     protected $useSoftDeletes = true;
 
     protected $allowedFields = [
-        'is_returned','book_id', 'student_id', 'due_at'
+        'units_borrowed', 'book_id', 'student_id', 'due_at'
     ];
 
     protected $useTimestamps = true;
@@ -30,8 +30,15 @@ class BorrowedBookModel extends Model
     public function getBooks($slug = false)
     {
         if ($slug === false)
-            return $this->join('book_tbl', 'book_tbl.book_id = borrowed_book_tbl.book_id')->join('category_tbl', 'category_tbl.category_id = book_tbl.category_id')->join('student_tbl', 'student_tbl.student_id = borrowed_book_tbl.student_id')->where('is_returned', 0)->findAll();
-        
+            return $this->join('book_tbl', 'book_tbl.book_id = borrowed_book_tbl.book_id', 'left')->join('category_tbl', 'category_tbl.category_id = book_tbl.category_id', 'left')->join('student_tbl', 'student_tbl.student_id = borrowed_book_tbl.student_id', 'left')->findAll();
+
         return $this->where(['book_id' => $slug])->first();
+    }
+
+    public function getMonthlyReport()
+    {
+        $db = db_connect();
+        return $db->query("SELECT MAX(MONTHNAME(created_at)) AS MONTHS, COUNT(1) AS 'BORROWED BOOK'
+        FROM borrowed_book_tbl GROUP BY MONTH(created_at)")->getResult();
     }
 }
