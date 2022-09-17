@@ -41,7 +41,6 @@ $routes->post('signin', 'Account::signin');
 $routes->get('home', 'Page::showPage/home');
 $routes->get('registered_books', 'Page::showPage/registered_books');
 $routes->get('registered_books/edit_book/(:num)', 'Page::showPage/registered_books/edit_book/$1');
-$routes->get('registered_books/delete_book/(:num)', 'Page::showPage/registered_books/delete_book/$1');
 $routes->get('registered_books/borrow_book/(:num)', 'Page::showPage/registered_books/borrow_book/$1');
 
 $routes->get('borrowed_books', 'Page::showPage/borrowed_books');

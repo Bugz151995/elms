@@ -79,7 +79,7 @@ class Book extends BaseController
     }
     
     /**
-     * deletes a borrowed book data
+     * deletes a book data
      * 
      * @return string
      */

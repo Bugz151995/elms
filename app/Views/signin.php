@@ -11,7 +11,7 @@
 			<span class="ps-4 pe-4">OR</span>
 			<hr style="height: 6px" class="mt-2 mb-2 flex-fill">
 		</div>
-		<a href="http://gnhs-lms.edu.ph" class="btn btn-light mt-3 w-100">Visit Users Website <i class="fas fa-fw fa-arrow-right"></i></a>
+		<a href="http://goanhs.edu.ph" class="btn btn-light mt-3 w-100">Visit Users Website <i class="fas fa-fw fa-arrow-right"></i></a>
 	</div>
 
 	<?= form_open('signin', ['id' => 'signinForm', 'class' => 'col']) ?>
@@ -45,7 +45,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-image: url('http://elms.gnhs.edu.ph/bg.jpg');
+		background-image: url('http://goanhs-admin.edu.ph/bg.jpg');
 		background-size: cover;
 	}
 
