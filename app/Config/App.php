@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://goanhs-admin.edu.ph/';
+    public $baseURL = 'http://goanhs-lmsadmin.edu.ph/';
 
     /**
      * --------------------------------------------------------------------------

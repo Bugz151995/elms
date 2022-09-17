@@ -9,7 +9,7 @@
 
 <main id="content">
     <?= $this->include('components/breadcrumb') ?>
-    <?= $this->include('components/create_rb') ?>
+    <?= $this->include('components/modal_scan_return') ?>
 
     <div class="" id="reader"></div>
     <div class="table-responsive">

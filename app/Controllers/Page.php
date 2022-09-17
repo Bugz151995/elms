@@ -94,7 +94,7 @@ class Page extends BaseController
         if ($slug !== false && $type === 'delete_borrowed_book')
           return view('delete_bb', array_merge($first_seg, $path_data, $book_data, $cat_data));
 
-        return view($page_name, array_merge($b_book_data, $first_seg, $path_data));
+        return view($page_name, array_merge($b_book_data, $first_seg, $path_data, $student_data));
         break;
 
       case 'returned_books':

@@ -45,7 +45,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-image: url('http://goanhs-admin.edu.ph/bg.jpg');
+		background-image: url('http://goanhs-lmsadmin.edu.ph/bg.jpg');
 		background-size: cover;
 	}
 
