@@ -40,7 +40,6 @@ class Page extends BaseController
 
     $path_data = ['path' => $path];
     $first_seg = ['page' => $uri->getSegment(1)];
-    $time_data = ['time' => $time];
     $a_book_data = ['books' => $a_book->getBooks()];
     $b_book_data = ['books' => $b_book->getBooks()];
     $r_book_data = ['books' => $r_book->getBooks()];
@@ -59,6 +58,7 @@ class Page extends BaseController
       'bbooks_mm_report' => $b_book->getMonthlyReport(),
       'rbooks_mm_report' => $r_book->getMonthlyReport()
     ];
+    echo (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
     switch ($page_name) {
       case 'home':
@@ -66,60 +66,18 @@ class Page extends BaseController
         break;
 
       case 'registered_books':
-        if ($slug !== false)
-          $book_data = ['book' => $a_book->find($slug)];
-
-        if ($slug !== false && $type === 'edit_book')
-          return view('edit_b', array_merge($first_seg, $path_data, $book_data, $cat_data));
-
-        if ($slug !== false && $type === 'delete_book')
-          return view('delete_b', array_merge($first_seg, $path_data, $book_data, $cat_data));
-
-        if ($slug !== false && $type === 'borrow_book')
-          return view('borrow_b', array_merge($first_seg, $path_data, $book_data, $cat_data, $student_data));
-
         return view($page_name, array_merge($first_seg, $path_data, $a_book_data, $cat_data));
         break;
 
       case 'borrowed_books':
-        if ($slug !== false) 
-          $book_data = ['book' => $b_book->join('book_tbl', 'book_tbl.book_id = borrowed_book_tbl.book_id')->join('student_tbl', 'student_tbl.student_id = borrowed_book_tbl.student_id')->join('class_tbl', 'class_tbl.class_id = student_tbl.class_id')->find($slug)];
-
-        if ($slug !== false && $type === 'edit_borrowed_book')
-          return view('edit_bb', array_merge($first_seg, $path_data, $book_data, $cat_data, $student_data));
-
-        if ($slug !== false && $type === 'return_borrowed_book')
-          return view('update_bb', array_merge($first_seg, $path_data, $book_data, $cat_data, $time_data));
-
-        if ($slug !== false && $type === 'delete_borrowed_book')
-          return view('delete_bb', array_merge($first_seg, $path_data, $book_data, $cat_data));
-
         return view($page_name, array_merge($b_book_data, $first_seg, $path_data, $student_data));
         break;
 
       case 'returned_books':
-        if ($slug !== false) 
-          $book_data = ['book' => $r_book->join('book_tbl', 'book_tbl.book_id = returned_book_tbl.book_id')->join('student_tbl', 'student_tbl.student_id = returned_book_tbl.student_id')->join('class_tbl', 'class_tbl.class_id = student_tbl.class_id')->find($slug)];
-
-        if ($slug !== false && $type === 'view_returned_book')
-          return view('view_rb', array_merge($first_seg, $path_data, $book_data, $cat_data));
-
-        if ($slug !== false && $type === 'delete_returned_book')
-          return view('delete_rb', array_merge($first_seg, $path_data, $book_data, $cat_data));
-
         return view($page_name, array_merge($r_book_data, $first_seg, $path_data));
         break;
 
       case 'registered_users':
-        if ($slug !== false) 
-          $account_data = ['user' => $user->join('student_tbl', 'student_tbl.student_id = account_tbl.student_id')->find($slug)];
-
-        if ($slug !== false && $type === 'edit_user')
-          return view('edit_u', array_merge($first_seg, $path_data, $account_data, $cat_data, $class_data));
-
-        if ($slug !== false && $type === 'delete_user')
-          return view('delete_u', array_merge($first_seg, $path_data, $account_data, $cat_data, $class_data));
-
         return view($page_name, array_merge($user_data, $first_seg, $path_data, $class_data));
         break;
 
@@ -128,15 +86,6 @@ class Page extends BaseController
         break;
 
       case 'user_fines':
-        if ($slug !== false)
-          $fine_data = ['fine' => $fine->join('student_tbl', 'student_tbl.student_id = account_fine_tbl.student_id')->join('account_tbl', 'account_tbl.student_id = student_tbl.student_id')->join('class_tbl', 'class_tbl.class_id = student_tbl.class_id')->find($slug)];
-
-        if ($slug !== false && $type === 'view_user_fine')
-          return view('view_uf', array_merge($fine_data, $first_seg, $path_data, $class_data));
-
-        if ($slug !== false && $type === 'delete_user_fine')
-          return view('delete_uf', array_merge($fine_data, $first_seg, $path_data, $class_data));
-
         return view($page_name, array_merge($fine_data, $first_seg, $path_data));
         break;
 

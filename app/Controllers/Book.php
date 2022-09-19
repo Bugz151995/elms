@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use \App\Models\BookModel;
+use \App\Models\QRCodeModel;
 use CodeIgniter\I18n\Time;
 
 class Book extends BaseController
@@ -17,6 +18,8 @@ class Book extends BaseController
     public function create()
     {
         $book = model(BookModel::class);
+        $qrcode = model(QRCodeModel::class);
+        $time = new Time('now');
 
         $rules = [
             'name' => 'required',
@@ -27,13 +30,18 @@ class Book extends BaseController
         ];
 
         if ($this->validate($rules)) {
+            $qrcode->insert([
+                'qrcode' => 'B-'.$time->timestamp
+            ]);
+
             $book->save([
                 'name' => $this->request->getPost('name'),
                 'author' => $this->request->getPost('author'),
                 'publish_date' => $this->request->getPost('publish_date'),
                 'units' => $this->request->getPost('units'),
                 'units_athand' => $this->request->getPost('units'),
-                'category_id' => $this->request->getPost('category')
+                'category_id' => $this->request->getPost('category'),
+                'qrcode_id' => $qrcode->getInsertID()
             ]);
 
             session()->setFlashdata('success', 'The book was successfully saved.');

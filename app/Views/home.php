@@ -7,7 +7,7 @@
     <?= $this->include('components/sidebar') ?>
 </header>
 <main id="content">
-    <div class="container">
+    <div class="container-fluid ps-4 pe-4">
         <?= $this->include('components/breadcrumb') ?>
 
         <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-4 g-4 mb-5">

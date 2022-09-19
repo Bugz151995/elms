@@ -39,27 +39,13 @@ $routes->get('/', 'Page::showPage');
 $routes->get('signout', 'Account::signout');
 $routes->post('signin', 'Account::signin');
 $routes->get('home', 'Page::showPage/home');
+
 $routes->get('registered_books', 'Page::showPage/registered_books');
-$routes->get('registered_books/borrow_book/(:num)', 'Page::showPage/registered_books/borrow_book/$1');
-
 $routes->get('borrowed_books', 'Page::showPage/borrowed_books');
-$routes->get('borrowed_books/edit_borrowed_book/(:num)', 'Page::showPage/borrowed_books/edit_borrowed_book/$1');
-$routes->get('borrowed_books/return_borrowed_book/(:num)', 'Page::showPage/borrowed_books/return_borrowed_book/$1');
-$routes->get('borrowed_books/delete_borrowed_book/(:num)', 'Page::showPage/borrowed_books/delete_borrowed_book/$1');
-
 $routes->get('returned_books', 'Page::showPage/returned_books');
-$routes->get('returned_books/view_returned_book/(:num)', 'Page::showPage/returned_books/view_returned_book/$1');
-$routes->get('returned_books/delete_returned_book/(:num)', 'Page::showPage/returned_books/delete_returned_book/$1');
-
 $routes->get('registered_users', 'Page::showPage/registered_users');
-$routes->get('registered_users/edit_user/(:num)', 'Page::showPage/registered_users/edit_user/$1');
-$routes->get('registered_users/delete_user/(:num)', 'Page::showPage/registered_users/delete_user/$1');
-
 $routes->get('user_rankings', 'Page::showPage/user_rankings');
-
 $routes->get('user_fines', 'Page::showPage/user_fines');
-$routes->get('user_fines/view_user_fine/(:num)', 'Page::showPage/user_fines/view_user_fine/$1');
-$routes->get('user_fines/delete_user_fine/(:num)', 'Page::showPage/user_fines/delete_user_fine/$1');
 
 $routes->post('registered_books/create', 'Book::create');
 $routes->post('registered_books/update', 'Book::update');

@@ -8,7 +8,7 @@
 </header>
 
 <main id="content">
-  <div class="container">
+  <div class="container-fluid ps-4 pe-4">
     <?= $this->include('components/breadcrumb') ?>
     <?= $this->include('components/modal_add_user') ?>
 

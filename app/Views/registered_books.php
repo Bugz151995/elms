@@ -8,7 +8,7 @@
 </header>
 
 <main id="content">
-  <div class="container">
+  <div class="container-fluid ps-4 pe-4">
     <?= $this->include('components/breadcrumb') ?>
     <?= $this->include('components/modal_add_book') ?>
     <div class="table-responsive">
@@ -22,6 +22,7 @@
             <th class="text-nowrap">Category</th>
             <th class="text-nowrap">Units</th>
             <th class="text-nowrap">Units at hand</th>
+            <th class="text-nowrap">QR Code</th>
             <th class="text-center">Action</th>
           </tr>
         </thead>
@@ -36,6 +37,7 @@
               <td class="text-capitalize"><?= $book['category'] ?></td>
               <td class="text-capitalize"><?= $book['units'] ?></td>
               <td class="text-capitalize"><?= $book['units_athand'] ?></td>
+              <td></td>
               <td class="text-center text-nowrap">
                 <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<?= $book['book_id'] ?>">
                   <i class="fas fa fa-fw fa-edit"></i>

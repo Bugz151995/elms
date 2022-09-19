@@ -15,7 +15,7 @@ class ReturnedBookModel extends Model
     protected $useSoftDeletes = true;
 
     protected $allowedFields = [
-        'units_returned', 'book_id', 'student_id'
+        'units_returned', 'book_id', 'student_id', 'qrcode_id'
     ];
 
     protected $useTimestamps = true;
