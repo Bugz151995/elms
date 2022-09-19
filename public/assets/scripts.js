@@ -1,22 +1,32 @@
-var sidebarBtn = document.getElementById('sidebarBtn');
-var sidebarBtnIcon = document.getElementById('sidebarBtnIcon');
-
+/**
+ * refine thihs code lateer
+ */
 $('#sidebarBtn').click(function () {
-    if ($('#sidebar').hasClass('closedSidebar')) {
-        $('#sidebar').addClass('openedSidebar');
-        $('#topbar').addClass('openedSidebar');
-        $('#content').addClass('openedSidebar');
-        $('#sidebar').removeClass('closedSidebar');
-        $('#topbar').removeClass('closedSidebar');
-        $('#content').removeClass('closedSidebar');
+    var isClosed = $('#sidebar').css('left') === "-280px" ? true : false;
+    if (isClosed) {
+        $('#sidebar').addClass('opened');
+        $('#topbar').addClass('opened');
+        $('#content').addClass('opened');
+        $('#sidebar').removeClass('closed');
+        $('#topbar').removeClass('closed');
+        $('#content').removeClass('closed');
     } else {
-        $('#sidebar').addClass('closedSidebar');
-        $('#topbar').addClass('closedSidebar');
-        $('#content').addClass('closedSidebar');
-        $('#sidebar').removeClass('openedSidebar');
-        $('#topbar').removeClass('openedSidebar');
-        $('#content').removeClass('openedSidebar');
+        $('#sidebar').addClass('closed');
+        $('#topbar').addClass('closed');
+        $('#content').addClass('closed');
+        $('#sidebar').removeClass('opened');
+        $('#topbar').removeClass('opened');
+        $('#content').removeClass('opened');
     }
+});
+
+/**
+ * topbar
+ */
+$(window).scroll(function(){
+    var scrollPosition = $(window).scrollTop();
+    console.log(scrollPosition);
+    scrollPosition > 0 ? $('#topbar').toggleClass('shadow') : $('#topbar').removeClass('shadow');
 });
 
 function successToast(msg) {
@@ -25,7 +35,7 @@ function successToast(msg) {
         icon: 'success',
         text: msg,
         showHideTransition: 'slide', // It can be plain, fade or slide
-        bgColor: 'blue', // Background color for toast
+        bgColor: '#198754', // Background color for toast
         textColor: '#eee', // text color
         hideAfter: 5000, // `false` to make it sticky or time in miliseconds to hide after
         stack: 5, // `fakse` to show one stack at a time count showing the number of toasts that can be shown at once
@@ -132,7 +142,7 @@ $(document).ready(function () {
 });
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
+(function () {
     'use strict'
 
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -140,14 +150,14 @@ $(document).ready(function () {
 
     // Loop over them and prevent submission
     Array.prototype.slice.call(forms)
-      .forEach(function(form) {
-        form.addEventListener('submit', function(event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
 
-          form.classList.add('was-validated')
-        }, false)
-      })
-  })()
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()

@@ -13,4 +13,4 @@
 <!-- autocomplete css -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css">
 <!-- styles -->
-<link rel="stylesheet" href="<?= base_url()?>/styles.css">
+<link rel="stylesheet" href="<?= base_url()?>/assets/styles.css">

@@ -41,6 +41,50 @@ h3 {
     --color13: #bb303e;
 }
 
+
+#signinMain {
+    height: 100vh;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('http://goanhs-lmsadmin.edu.ph/assets/bg.jpg');
+    background-size: cover;
+}
+
+#signinContainer {
+    border-radius: 1rem;
+    background-color: #dab0fdcc;
+    padding: 3rem;
+    box-shadow: -3px 3px 15px #c685fccc;
+}
+
+#signinForm {
+    background-color: #531388cc;
+    color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+#signinBrand {
+    width: 150px;
+}
+
+#signinSubmitBtn {
+    background-color: #D90368;
+}
+
+#signinVisitBtn {
+    background-color: #541388;
+    color: white;
+}
+
+#signinDivider {
+    height: 5px;
+    border-radius: 1rem;
+}
+
 #sidebar {
     position: fixed;
     background-color: var(--color3);
@@ -52,11 +96,11 @@ h3 {
     overflow: auto;
 }
 
-#sidebar.closedSidebar {
+#sidebar.closed {
     left: -280px;
 }
 
-#sidebar.openedSidebar {
+#sidebar.opened {
     left: 0;
 }
 
@@ -136,12 +180,12 @@ li a.nav-link:hover {
     transition: 0.2s ease-in;
 }
 
-#topbar.closedSidebar {
+#topbar.closed {
     left: 0px;
     width: 100%;
 }
 
-#topbar.openedSidebar {
+#topbar.opened {
     left: 280px;
     width: calc(100% - 280px);
 }
@@ -157,7 +201,7 @@ li a.nav-link:hover {
 }
 
 .user-border {
-    border-color: var(--color2)!important;
+    border-color: var(--color2) !important;
 }
 
 /* content */
@@ -166,16 +210,15 @@ li a.nav-link:hover {
     top: 56px;
     left: 0;
     width: 100%;
-    padding: 2rem;
     transition: 0.2s ease-in;
 }
 
-#content.closedSidebar {
+#content.closed {
     left: 0px;
     width: 100%;
 }
 
-#content.openedSidebar {
+#content.opened {
     left: 280px;
     width: calc(100% - 280px);
 }
@@ -195,13 +238,13 @@ li a.nav-link:hover {
 }
 
 #table_wrapper {
-    border-radius: 0.3rem!important;
+    border-radius: 0.3rem !important;
     padding: 1rem 0 !important;
-    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
 }
 
-#table_wrapper > .row {
-    margin: 1rem!important;
+#table_wrapper>.row {
+    margin: 1rem !important;
 }
 
 /* dashboard */
@@ -218,6 +261,7 @@ li a.nav-link:hover {
     border-top-right-radius: 1rem;
     color: white;
 }
+
 #btnGroup2 {
     background-color: var(--color8);
     border-radius: 0;
@@ -225,6 +269,7 @@ li a.nav-link:hover {
     border-top-right-radius: 1rem;
     color: white;
 }
+
 #btnGroup3 {
     background-color: var(--color10);
     border-radius: 0;
@@ -232,6 +277,7 @@ li a.nav-link:hover {
     border-top-right-radius: 1rem;
     color: white;
 }
+
 #btnGroup4 {
     background-color: var(--color12);
     border-radius: 0;
@@ -239,24 +285,28 @@ li a.nav-link:hover {
     border-top-right-radius: 1rem;
     color: white;
 }
+
 #btnGroup1Info {
     background-color: var(--color7);
     border-radius: 0;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }
+
 #btnGroup2Info {
     background-color: var(--color8);
     border-radius: 0;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }
+
 #btnGroup3Info {
     background-color: var(--color10);
     border-radius: 0;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }
+
 #btnGroup4Info {
     background-color: var(--color12);
     border-radius: 0;
@@ -268,39 +318,46 @@ li a.nav-link:hover {
     background-color: var(--color1);
     color: white;
 }
+
 #btnGroup2:hover {
     background-color: var(--color9);
     color: white;
 }
+
 #btnGroup3:hover {
     background-color: var(--color11);
     color: white;
 }
+
 #btnGroup4:hover {
     background-color: var(--color13);
     color: white;
 }
+
 #btnGroup1Info:hover {
     background-color: var(--color1);
 }
+
 #btnGroup2Info:hover {
     background-color: var(--color9);
 }
+
 #btnGroup3Info:hover {
     background-color: var(--color11);
 }
+
 #btnGroup4Info:hover {
     background-color: var(--color13);
 }
 
 /* modal */
 .modal-header {
-    border-top-right-radius: 0.9rem!important;
-    border-top-left-radius: 0.9rem!important;
+    border-top-right-radius: 0.9rem !important;
+    border-top-left-radius: 0.9rem !important;
 }
 
 .modal-content {
-    border-radius: 1rem!important;
+    border-radius: 1rem !important;
 }
 
 .modal-title {
@@ -357,7 +414,16 @@ li a.nav-link:hover {
 }
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
+@media (min-width: 576px) {}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
     #sidebar {
         left: 0;
     }
@@ -373,15 +439,6 @@ li a.nav-link:hover {
         height: calc(100% - 56px);
     }
 }
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {}
-
-/* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {}
 
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {}

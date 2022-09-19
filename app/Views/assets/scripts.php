@@ -16,4 +16,5 @@
 <!-- chart js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 <!-- scripts -->
-<script src="<?= base_url()?>/scripts.js"></script>
+<script src="<?= base_url()?>/assets/scripts.js"></script>
+<script src="<?= base_url()?>/plugins/scripts.js"></script>

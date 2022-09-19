@@ -32,6 +32,7 @@ class Book extends BaseController
                 'author' => $this->request->getPost('author'),
                 'publish_date' => $this->request->getPost('publish_date'),
                 'units' => $this->request->getPost('units'),
+                'units_athand' => $this->request->getPost('units'),
                 'category_id' => $this->request->getPost('category')
             ]);
 
@@ -57,6 +58,7 @@ class Book extends BaseController
             'author' => 'required',
             'publish_date' => 'required',
             'units' => 'required',
+            'units_athand' => 'required',
             'category' => 'required',
         ];
 
@@ -67,6 +69,7 @@ class Book extends BaseController
                 'author' => $this->request->getPost('author'),
                 'publish_date' => $this->request->getPost('publish_date'),
                 'units' => $this->request->getPost('units'),
+                'units_athand' => $this->request->getPost('units_athand'),
                 'category_id' => $this->request->getPost('category'),
             ]);
 

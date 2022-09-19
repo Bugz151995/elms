@@ -1,4 +1,4 @@
-<div id="breadcrumbContainer" class="mb-5">
+<div id="breadcrumbContainer" class="mb-5 bg-white mt-4 pt-2">
   <?php $url = explode('/', $path); ?>
 
   <h1 id="pageTitle" class="me-auto text-capitalize">

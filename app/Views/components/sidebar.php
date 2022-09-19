@@ -56,7 +56,7 @@
   <div class="mt-auto p-3">
     <hr class="text-white border-3 border rounded rounded-3">
     <a href="<?= base_url() ?>/" id="sidebarProfileLink" class="btn w-100 text-white d-flex align-items-center">
-      <img src="<?= base_url() ?>/default.png" alt="" width="50" class="rounded-circle border-3 border user-border me-2 p-1">
+      <img src="<?= base_url() ?>/assets/default.png" alt="" width="50" class="rounded-circle border-3 border user-border me-2 p-1">
       <p class="m-0 ps-2 text-start">
         <span class="fs-6 d-block"><?= session()->get('fname').' '.substr(session()->get('mname'),0,1).'. '.session()->get('lname') ?></span>
         <span class="small d-block text-secondary">Administrator</span>
