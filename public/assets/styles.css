@@ -43,7 +43,8 @@ h3 {
 
 
 #signinMain {
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     width: 100%;
     margin: auto;
     display: flex;
@@ -51,17 +52,12 @@ h3 {
     align-items: center;
     background-image: url('http://goanhs-lmsadmin.edu.ph/assets/bg.jpg');
     background-size: cover;
-}
-
-#signinContainer {
-    border-radius: 1rem;
-    background-color: #dab0fdcc;
-    padding: 3rem;
-    box-shadow: -3px 3px 15px #c685fccc;
+    padding: 2rem;
 }
 
 #signinForm {
     background-color: #531388cc;
+    max-width: 700px;
     color: white;
     padding: 2rem;
     border-radius: 1rem;

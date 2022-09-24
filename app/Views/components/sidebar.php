@@ -5,7 +5,7 @@
 
 <div id="sidebar" class="d-flex flex-column">
   <a href="/" id="sidebarBrand" class="w-100 d-flex justify-content-center align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none p-2 gap-2">
-    <img src="<?= base_url() ?>/gnhs_logo.png" id="logo" width="20px" alt="">
+    <img src="<?= base_url() ?>/assets/gnhs_logo.png" id="logo" width="20px" alt="">
     <span id="brandName" class="navbar-brand">
       GNHS LMS
     </span>

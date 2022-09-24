@@ -2,8 +2,8 @@
   <div class="container-fluid">
     <button class="btn" id="sidebarBtn"><i id="sidebarBtnIcon" class="fas fa-fw fa-bars"></i></button>
     <a class="navbar-brand" id="schoolName">
-      <span class="d-none d-md-block">Goa National High School - Library Management System</span>
-      <span class="d-block d-md-none">GNHS-LMS</span>
+      <span class="d-none d-md-block">GNHS LMS ADMINISTRATOR</span>
+      <span class="d-block d-md-none">GNHS LMS</span>
     </a>
 
     <div class="dropdown dropstart">

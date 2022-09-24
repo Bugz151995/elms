@@ -16,28 +16,42 @@
         <thead>
           <tr>
             <th class="text-nowrap">#</th>
+            <th class="text-nowrap">QR Code</th>
             <th class="text-nowrap">Book Name</th>
             <th class="text-nowrap">Author</th>
             <th class="text-nowrap">Publish Date</th>
             <th class="text-nowrap">Category</th>
             <th class="text-nowrap">Units</th>
             <th class="text-nowrap">Units at hand</th>
-            <th class="text-nowrap">QR Code</th>
             <th class="text-center">Action</th>
           </tr>
         </thead>
 
         <tbody>
           <?php foreach ($books as $key => $book) : ?>
-            <tr>
+            <tr class="align-middle">
               <td><?= ++$key ?></td>
+              <td class="text-center">
+                <div id="qrcode<?= $book['qrcode_id'] ?>"></div>
+                <script type="text/javascript">
+                  document.addEventListener('DOMContentLoaded', function() {
+                    var qrcode = new QRCode(document.getElementById("qrcode<?= $book['qrcode_id'] ?>"), {
+                      text: "<?= $book['qrcode'] ?>",
+                      width: 64,
+                      height: 64,
+                      colorDark: "#000000",
+                      colorLight: "#ffffff",
+                      correctLevel: QRCode.CorrectLevel.H
+                    });
+                  });
+                </script>
+              </td>
               <td class="text-capitalize"><?= $book['name'] ?></td>
               <td class="text-capitalize"><?= $book['author'] ?></td>
               <td class="text-capitalize"><?= $book['publish_date'] ?></td>
               <td class="text-capitalize"><?= $book['category'] ?></td>
               <td class="text-capitalize"><?= $book['units'] ?></td>
               <td class="text-capitalize"><?= $book['units_athand'] ?></td>
-              <td></td>
               <td class="text-center text-nowrap">
                 <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<?= $book['book_id'] ?>">
                   <i class="fas fa fa-fw fa-edit"></i>

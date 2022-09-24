@@ -58,7 +58,6 @@ class Page extends BaseController
       'bbooks_mm_report' => $b_book->getMonthlyReport(),
       'rbooks_mm_report' => $r_book->getMonthlyReport()
     ];
-    echo (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
     switch ($page_name) {
       case 'home':

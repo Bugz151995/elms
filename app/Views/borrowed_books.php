@@ -11,7 +11,6 @@
   <div class="container-fluid ps-4 pe-4">
     <?= $this->include('components/breadcrumb') ?>
     <?= $this->include('components/modal_scan_borrow') ?>
-
     <div class="table-responsive">
       <table id="table" class="table table-light table-striped small">
         <thead>

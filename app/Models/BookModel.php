@@ -30,7 +30,7 @@ class BookModel extends Model
     public function getBooks($slug = false)
     {
         if ($slug === false)
-            return $this->join('category_tbl', 'book_tbl.category_id = category_tbl.category_id')->findAll();
+            return $this->join('category_tbl', 'book_tbl.category_id = category_tbl.category_id')->join('qrcode_tbl', 'qrcode_tbl.qrcode_id = book_tbl.qrcode_id')->findAll();
         
         return $this->where(['book_id' => $slug])->first();
     }
