@@ -16,26 +16,24 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Rank</th>
                         <th>Student's Name</th>
+                        <th>Username</th>
                         <th>Grade</th>
                         <th>Section</th>
-                        <th>Username</th>
-                        <th>Registered @</th>
-                        <th class="text-center">Action</th>
+                        <th>Created @</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach($students as $key => $student) : ?>
                     <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td class="text-center">&nbsp;</td>
+                        <td><?= ++$key ?></td>
+                        <td><?= $student['fname'].' '.$student['mname'].' '.$student['lname'] ?></td>
+                        <td><?= $student['username'] ?></td>
+                        <td><?= $student['grade_level'] ?></td>
+                        <td><?= $student['section_name'] ?></td>
+                        <td><?= $student['created_at'] ?></td>
                     </tr>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>

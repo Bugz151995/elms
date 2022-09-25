@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class StudentModel extends Model
+class StudentRankModel extends Model
 {
-    protected $table      = 'student_tbl';
-    protected $primaryKey = 'student_id';
+    protected $table      = 'studentrank_tbl';
+    protected $primaryKey = 'studentrank_id';
 
     protected $useAutoIncrement = true;
 
@@ -15,7 +15,7 @@ class StudentModel extends Model
     protected $useSoftDeletes = true;
 
     protected $allowedFields = [
-        'fname', 'mname', 'lname', 'class_id'
+        'student_id'
     ];
 
     protected $useTimestamps = true;
@@ -33,11 +33,8 @@ class StudentModel extends Model
      * 
      * @return array
      */
-    public function getStudents($slug = false)
+    public function getRankings()
     {
-        if($slug !== false)
-            return $this->find($slug);
-        
-        return $this->findAll();
+        return $this->select('COUNT("student_id") as total, fname, mname, lname, username, grade_level, section_name, studentrank_tbl.created_at')->join('student_tbl', 'student_tbl.student_id = studentrank_tbl.student_id', 'left')->join('account_tbl', 'account_tbl.student_id = student_tbl.student_id', 'left')->join('class_tbl', 'class_tbl.class_id = student_tbl.class_id', 'left')->groupBy('student_tbl.student_id')->orderBy('total', 'desc')->findAll();
     }
 }

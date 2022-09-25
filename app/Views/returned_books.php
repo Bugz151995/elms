@@ -12,7 +12,6 @@
         <?= $this->include('components/breadcrumb') ?>
         <?= $this->include('components/modal_scan_return') ?>
 
-        <div class="" id="reader"></div>
         <div class="table-responsive">
             <table id="table" class="table table-light table-striped small">
                 <thead>
@@ -48,37 +47,4 @@
     </div>
 </main>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const html5QrCode = new Html5Qrcode( /* element id */ "reader");
-        Html5Qrcode.getCameras().then(devices => {
-            /**
-             * devices would be an array of objects of type:
-             * { id: "id", label: "label" }
-             */
-            if (devices && devices.length) {
-                var cameraId = devices[0].id;
-                html5QrCode.start(
-                        cameraId, {
-                            fps: 10, // Optional, frame per seconds for qr code scanning
-                            qrbox: {
-                                width: 250,
-                                height: 250
-                            } // Optional, if you want bounded box UI
-                        },
-                        (decodedText, decodedResult) => {
-                            // do something when code is read
-                        },
-                        (errorMessage) => {
-                            // parse error, ignore it.
-                        })
-                    .catch((err) => {
-                        // Start failed, handle it.
-                    });
-            }
-        }).catch(err => {
-            // handle err
-        });
-    });
-</script>
 <?= $this->endSection() ?>

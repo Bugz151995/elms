@@ -34,16 +34,7 @@
               <td class="text-center">
                 <div id="qrcode<?= $book['qrcode_id'] ?>"></div>
                 <script type="text/javascript">
-                  document.addEventListener('DOMContentLoaded', function() {
-                    var qrcode = new QRCode(document.getElementById("qrcode<?= $book['qrcode_id'] ?>"), {
-                      text: "<?= $book['qrcode'] ?>",
-                      width: 64,
-                      height: 64,
-                      colorDark: "#000000",
-                      colorLight: "#ffffff",
-                      correctLevel: QRCode.CorrectLevel.H
-                    });
-                  });
+                  document.addEventListener('DOMContentLoaded', function() {generateQR(<?= $book['qrcode_id'] ?>, "<?= $book['qrcode'] ?>")});
                 </script>
               </td>
               <td class="text-capitalize"><?= $book['name'] ?></td>

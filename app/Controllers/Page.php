@@ -2,14 +2,6 @@
 
 namespace App\Controllers;
 
-use \App\Models\BookModel;
-use \App\Models\BorrowedBookModel;
-use \App\Models\ReturnedBookModel;
-use \App\Models\CategoryModel;
-use \App\Models\StudentModel;
-use \App\Models\AccountModel;
-use \App\Models\AccountFineModel;
-use \App\Models\ClassModel;
 use CodeIgniter\I18n\Time;
 
 class Page extends BaseController
@@ -34,6 +26,7 @@ class Page extends BaseController
     $student = model(StudentModel::class);
     $user = model(AccountModel::class);
     $fine = model(AccountFineModel::class);
+    $studentrank = model(StudentRankModel::class);
     $class = model(ClassModel::class);
 
     $path = $uri->getPath();
@@ -48,6 +41,7 @@ class Page extends BaseController
     $fine_data = ['fines' => $fine->getFines()];
     $cat_data = ['categories' => $cat->getCategories()];
     $class_data = ['class' => $class->getClass()];
+    $studentrank_data = ['students' => $studentrank->getRankings()];
     $dash_count_data = [
       'total_students' => $student->countAll(),
       'total_books' => $a_book->countAll(),
@@ -81,7 +75,7 @@ class Page extends BaseController
         break;
 
       case 'user_rankings':
-        return view($page_name, array_merge($user_data, $first_seg, $path_data));
+        return view($page_name, array_merge($user_data, $first_seg, $path_data, $studentrank_data));
         break;
 
       case 'user_fines':

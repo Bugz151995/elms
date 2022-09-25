@@ -52,6 +52,7 @@ $routes->post('registered_books/update', 'Book::update');
 $routes->post('registered_books/delete', 'Book::delete');
 $routes->post('registered_books/borrow', 'Book::borrow');
 
+$routes->post('borrowed_books/create', 'BorrowedBook::create');
 $routes->post('borrowed_books/update', 'BorrowedBook::update');
 $routes->post('borrowed_books/delete', 'BorrowedBook::delete');
 
@@ -61,6 +62,7 @@ $routes->post('user_fines/delete', 'AccountFine::delete');
 
 $routes->post('registered_users/create', 'Account::create');
 $routes->post('registered_users/update', 'Account::update');
+$routes->post('registered_users/change_password', 'Account::changePassword');
 $routes->post('registered_users/delete', 'Account::delete');
 
 /*
