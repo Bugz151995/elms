@@ -15,7 +15,7 @@
 		<hr id="signinDivider">
 		<div class="mb-3 mt-4">
 			<label for="username" class="form-label">Username</label>
-			<input type="text" class="form-control form-control-sm" id="username" name="username" value="<?= set_value('username') ?>" placeholder="Enter your username...">
+			<input type="text" tabindex="1" class="form-control form-control-sm" id="username" name="username" value="<?= set_value('username') ?>" placeholder="Enter your username...">
 			<?= isset($validation) ? $validation->showError('username', 'single') : null ?>
 		</div>
 		<div class="mb-4">

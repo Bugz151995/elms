@@ -19,38 +19,38 @@ class Page extends BaseController
     session();
     $time = new Time('now');
     $uri = service('uri');
-    $a_book = model(BookModel::class);
-    $b_book = model(BorrowedBookModel::class);
-    $r_book = model(ReturnedBookModel::class);
-    $cat = model(CategoryModel::class);
-    $student = model(StudentModel::class);
-    $user = model(AccountModel::class);
-    $fine = model(AccountFineModel::class);
-    $studentrank = model(StudentRankModel::class);
-    $class = model(ClassModel::class);
+    $book_tbl = model(BookModel::class);
+    $borrowedbook_tbl = model(BorrowedBookModel::class);
+    $returnedbook_tbl = model(ReturnedBookModel::class);
+    $category_tbl = model(CategoryModel::class);
+    $student_tbl = model(StudentModel::class);
+    $account_tbl = model(AccountModel::class);
+    $accountfine_tbl = model(AccountFineModel::class);
+    $studentrank_tbl = model(StudentRankModel::class);
+    $class_tbl = model(ClassModel::class);
 
     $path = $uri->getPath();
 
     $path_data = ['path' => $path];
     $first_seg = ['page' => $uri->getSegment(1)];
-    $a_book_data = ['books' => $a_book->getBooks()];
-    $b_book_data = ['books' => $b_book->getBooks()];
-    $r_book_data = ['books' => $r_book->getBooks()];
-    $user_data = ['users' => $user->getAccounts()];
-    $student_data = ['students' => $student->getStudents()];
-    $fine_data = ['fines' => $fine->getFines()];
-    $cat_data = ['categories' => $cat->getCategories()];
-    $class_data = ['class' => $class->getClass()];
-    $studentrank_data = ['students' => $studentrank->getRankings()];
+    $book_data = ['books' => $book_tbl->getBooks()];
+    $borrowedbook_data = ['books' => $borrowedbook_tbl->getBooks()];
+    $returnedbook_data = ['books' => $returnedbook_tbl->getBooks()];
+    $account_data = ['users' => $account_tbl->getAccounts()];
+    $student_data = ['students' => $student_tbl->getStudents()];
+    $accountfine_data = ['fines' => $accountfine_tbl->getFines()];
+    $category_data = ['categories' => $category_tbl->getCategories()];
+    $class_data = ['class' => $class_tbl->getClass()];
+    $studentrank_data = ['students' => $studentrank_tbl->getRankings()];
     $dash_count_data = [
-      'total_students' => $student->countAll(),
-      'total_books' => $a_book->countAll(),
-      'total_bbooks' => $b_book->like('created_at', $time->toDateString())->countAllResults(),
-      'total_rbooks' => $r_book->like('created_at', $time->toDateString())->countAllResults(),
+      'total_students' => $student_tbl->countAll(),
+      'total_books' => $book_tbl->countAll(),
+      'total_bbooks' => $borrowedbook_tbl->like('created_at', $time->toDateString())->countAllResults(),
+      'total_rbooks' => $returnedbook_tbl->like('created_at', $time->toDateString())->countAllResults(),
     ];    
     $reports = [
-      'bbooks_mm_report' => $b_book->getMonthlyReport(),
-      'rbooks_mm_report' => $r_book->getMonthlyReport()
+      'bbooks_mm_report' => $borrowedbook_tbl->getMonthlyReport(),
+      'rbooks_mm_report' => $returnedbook_tbl->getMonthlyReport()
     ];
 
     switch ($page_name) {
@@ -59,27 +59,27 @@ class Page extends BaseController
         break;
 
       case 'registered_books':
-        return view($page_name, array_merge($first_seg, $path_data, $a_book_data, $cat_data));
+        return view($page_name, array_merge($first_seg, $path_data, $book_data, $category_data));
         break;
 
       case 'borrowed_books':
-        return view($page_name, array_merge($b_book_data, $first_seg, $path_data, $student_data));
+        return view($page_name, array_merge($borrowedbook_data, $first_seg, $path_data, $student_data));
         break;
 
       case 'returned_books':
-        return view($page_name, array_merge($r_book_data, $first_seg, $path_data));
+        return view($page_name, array_merge($returnedbook_data, $first_seg, $path_data));
         break;
 
       case 'registered_users':
-        return view($page_name, array_merge($user_data, $first_seg, $path_data, $class_data));
+        return view($page_name, array_merge($account_data, $first_seg, $path_data, $class_data));
         break;
 
       case 'user_rankings':
-        return view($page_name, array_merge($user_data, $first_seg, $path_data, $studentrank_data));
+        return view($page_name, array_merge($account_data, $first_seg, $path_data, $studentrank_data));
         break;
 
       case 'user_fines':
-        return view($page_name, array_merge($fine_data, $first_seg, $path_data));
+        return view($page_name, array_merge($accountfine_data, $first_seg, $path_data));
         break;
 
       default:

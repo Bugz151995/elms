@@ -56,6 +56,7 @@ $routes->post('borrowed_books/create', 'BorrowedBook::create');
 $routes->post('borrowed_books/update', 'BorrowedBook::update');
 $routes->post('borrowed_books/delete', 'BorrowedBook::delete');
 
+$routes->post('returned_books/create', 'ReturnedBook::create');
 $routes->post('returned_books/delete', 'ReturnedBook::delete');
 
 $routes->post('user_fines/delete', 'AccountFine::delete');

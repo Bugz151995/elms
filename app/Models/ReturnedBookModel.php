@@ -15,7 +15,7 @@ class ReturnedBookModel extends Model
     protected $useSoftDeletes = true;
 
     protected $allowedFields = [
-        'units_returned', 'book_id', 'student_id', 'qrcode_id'
+        'book_id', 'student_id', 'qrcode_id'
     ];
 
     protected $useTimestamps = true;
@@ -30,7 +30,7 @@ class ReturnedBookModel extends Model
     public function getBooks($slug = false)
     {
         if ($slug === false)
-            return $this->join('book_tbl', 'book_tbl.book_id = returned_book_tbl.book_id')->join('category_tbl', 'category_tbl.category_id = book_tbl.category_id')->join('student_tbl', 'student_tbl.student_id = returned_book_tbl.student_id')->findAll();
+            return $this->join('book_tbl', 'book_tbl.book_id = returned_book_tbl.book_id', 'left')->join('category_tbl', 'category_tbl.category_id = book_tbl.category_id', 'left')->join('student_tbl', 'student_tbl.student_id = returned_book_tbl.student_id', 'left')->findAll();
         
         return $this->where(['book_id' => $slug])->first();
     }

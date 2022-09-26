@@ -34,4 +34,9 @@ class BookModel extends Model
         
         return $this->where(['book_id' => $slug])->first();
     }
+
+    public function getId($slug)
+    {
+        return $this->select('book_tbl.book_id, units_athand')->join('qrcode_tbl', 'qrcode_tbl.qrcode_id = book_tbl.qrcode_id')->where(['qrcode' => $slug])->first();
+    }
 }

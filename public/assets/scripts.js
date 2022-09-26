@@ -1,32 +1,3 @@
-function qrScanner(type) {
-	var lastResult, countResults = 0;
-
-	function onScanSuccess(decodedText, decodedResult) {
-		if (decodedText !== lastResult) {
-			++countResults;
-			lastResult = decodedText;
-			// Handle on success condition with the decoded message.
-			console.log(`Scan result ${decodedText}`, decodedResult);
-			$.post(
-				'https://goanhs-lmsadmin.edu.ph/borrowed_books/create', 
-				{
-					qrcode: decodedText
-				},
-				function(status){
-					window.location.href = "https://goanhs-lmsadmin.edu.ph/borrowed_books";
-				}
-			);
-		}
-	}
-
-	var html5QrcodeScanner = new Html5QrcodeScanner(
-		"qr-reader", {
-			fps: 10,
-			qrbox: 250
-		});
-	html5QrcodeScanner.render(onScanSuccess);
-}
-
 function generateQR(id, text) {
 	var qrcode = new QRCode(document.getElementById("qrcode" + id), {
 		text: text,
@@ -37,6 +8,7 @@ function generateQR(id, text) {
 		correctLevel: QRCode.CorrectLevel.H
 	});
 }
+
 /**
  * refine thihs code later
  */
@@ -128,50 +100,6 @@ function infoToast(msg) {
 	})
 }
 // TODO: toggle functionality on sidebar toggle button
-
-/**
- * @param int id
- * @param string placeHolderText
- * @param string strArray
- * 
- * @return [type]
- */
-function autocompleteInit(id, placeHolderText, strArray) {
-	const autoCompleteJS = new autoComplete({
-		selector: id,
-		placeHolder: placeHolderText,
-		data: {
-			src: [strArray],
-			cache: true,
-		},
-		resultsList: {
-			element: (list, data) => {
-				if (!data.results.length) {
-					// Create "No Results" message element
-					const message = document.createElement("div");
-					// Add class to the created element
-					message.setAttribute("class", "no_result");
-					// Add message text content
-					message.innerHTML = `<span>Found No Results for "${data.query}"</span>`;
-					// Append message element to the results list
-					list.prepend(message);
-				}
-			},
-			noResults: true,
-		},
-		resultItem: {
-			highlight: true,
-		},
-		events: {
-			input: {
-				selection: (event) => {
-					const selection = event.detail.selection.value;
-					autoCompleteJS.input.value = selection;
-				}
-			}
-		}
-	});
-}
 
 // data tables initialization
 $(document).ready(function () {
